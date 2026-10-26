@@ -1,5 +1,9 @@
 {
   "siteUrl": "https://nextround.apps.brothforge.com/",
   "searchAccess": "allow",
-  "trainingAccess": "disallow"
+  "trainingAccess": "disallow",
+  "verification": {
+    "google": "Gd3bomkAdh-y6IakKnyQxfEnaub3e-3iGr9Hnfc1xHA",
+    "bing": "3EBAD2C5666181FB9A7E8DC59A964A06"
+  }
 }

@@ -12,7 +12,7 @@
 
 NextRound 帮助企业求职者及公务员、事业单位报考者把散落的岗位准备材料转化为可关联、可追溯、可反复练习的本地资料。AI 在用户选择的外部服务中完成首轮训练与整理，应用本身不调用模型，也不自动上传简历。是否向外部 AI 提供 JD、简历或回答由您决定；请先匿名化，并了解所选服务的数据政策。本地保存不能保证主动交给外部 AI 的内容仍在本机。
 
-首个正式发布版本为 **1.0.0**，源码已公开，正式站点已上线。下面说明的功能以现有实现为准；未实现内置 AI／Agent／RAG、账号、云同步／远程数据库、订阅支付或独立熟练度算法／间隔复习（SRS）。现有训练历史、时长、自评和难度筛选不等于自动熟练度管理。界面目前以简体中文为主，本文件提供完整中英双语说明。
+当前版本为 **1.0.1**（首发为1.0.0），源码已公开，正式站点已上线。下面说明的功能以现有实现为准；未实现内置 AI／Agent／RAG、账号、云同步／远程数据库、订阅支付或独立熟练度算法／间隔复习（SRS）。现有训练历史、时长、自评和难度筛选不等于自动熟练度管理。界面目前以简体中文为主，本文件提供完整中英双语说明。
 
 ```mermaid
 flowchart LR
@@ -169,7 +169,7 @@ npm run build:source
 
 | 标识 | 含义 |
 | --- | --- |
-| 应用 `1.0.0` | 来自 `package.json`；首发确定为 `1.0.0`，对应 Tag 为 `v1.0.0`。 |
+| 应用 `1.0.1` | 来自 `package.json`；SEO验证补丁，对应 Tag `v1.0.1`，首发记录 `v1.0.0` 保留。 |
 | 本地状态 `schemaVersion: 1` | 当前本地档案及完整备份中的状态结构。 |
 | 统一导入 `next-round-unified-1.2` | 当前模板契约；解析器也兼容 1.0／1.1。模板的 `version: "4.0.1"` 是 V4 来源格式，不是应用版本。 |
 | 离线 `CACHE` | 由 `sw.js` 定义，仅更新资源缓存，不是数据迁移版本。 |
@@ -195,7 +195,7 @@ NextRound is a frontend-only, local-first workspace for enterprise job seekers a
 
 Initial AI training and content organization take place in an external service chosen by the user. NextRound validates and previews structured imports, supports practice and keeps local records; it does not call a model or automatically upload résumés. You decide whether to provide a résumé, job description or answer to an external AI. Anonymize materials and check that provider's data policy; local storage does not keep material local after you deliberately send it elsewhere.
 
-The first public release is **1.0.0**. Source is public and the production site is online. The interface is primarily Simplified Chinese, while this README contains complete Chinese and English instructions. Built-in AI/agents/RAG, accounts, cloud services, subscriptions/payments and an independent mastery/spaced-repetition system (SRS) are not implemented. Current difficulty filters, practice history, duration and self-assessment are not automatic mastery management.
+The current version is **1.0.1** (initial release: 1.0.0). Source is public and the production site is online. The interface is primarily Simplified Chinese, while this README contains complete Chinese and English instructions. Built-in AI/agents/RAG, accounts, cloud services, subscriptions/payments and an independent mastery/spaced-repetition system (SRS) are not implemented. Current difficulty filters, practice history, duration and self-assessment are not automatic mastery management.
 
 ```mermaid
 flowchart LR
@@ -312,7 +312,7 @@ The first visit defaults to Heaven (lights on). Later visits retain your saved a
 
 | Identifier | Meaning |
 | --- | --- |
-| Application `1.0.0` | From `package.json`; the first public release is set to `1.0.0`, with tag `v1.0.0`. The tag is `v1.0.0`. |
+| Application `1.0.1` | From `package.json`; the SEO-verification patch uses tag `v1.0.1`. The initial `v1.0.0` is preserved. |
 | Local `schemaVersion: 1` | The structure of local state and state inside full backups. |
 | Unified import `next-round-unified-1.2` | The current template contract; parser support also includes 1.0/1.1. Template `version: "4.0.1"` identifies V4 source format, not the application release. |
 | Offline `CACHE` | Defined by `sw.js` for resource updates, not data migration. |

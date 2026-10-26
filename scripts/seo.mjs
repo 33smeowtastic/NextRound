@@ -4,6 +4,20 @@ import { fileURLToPath } from "node:url";
 
 export const SEO_PUBLIC_FILES = ["about/index.html", "en/index.html", "seo.css", "robots.txt", "sitemap.xml", "examples/interview-prep.json", "examples/interview-prep.md"];
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+const verificationNames = Object.freeze({ google: "google-site-verification", bing: "msvalidate.01", baidu: "baidu-site-verification" });
+/** These are public ownership tokens, never API credentials or session data. */
+export function verificationMetadata(verification) {
+  if (verification === undefined) return "";
+  if (!verification || typeof verification !== "object" || Array.isArray(verification) || ![Object.prototype, null].includes(Object.getPrototypeOf(verification))) throw new Error("SEO verification must be a public-token object");
+  for (const key of Object.keys(verification)) {
+    if (!Object.hasOwn(verificationNames, key)) throw new Error("Unsupported SEO verification provider");
+    if (typeof verification[key] !== "string" || !/^[A-Za-z0-9_-]{1,256}$/.test(verification[key])) throw new Error("Invalid public SEO verification token");
+  }
+  return Object.entries(verificationNames)
+    .filter(([provider]) => Object.hasOwn(verification, provider))
+    .map(([provider, name]) => `<meta name="${name}" content="${escape(verification[provider])}">`)
+    .join("");
+}
 export function productionUrl(value) {
   const url = new URL(value);
   if (url.protocol !== "https:" || url.username || url.password || url.search || url.hash || ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname)) throw new Error("SEO site URL must be a public HTTPS directory without credentials, query or fragment");
@@ -20,7 +34,7 @@ const copy = {
     workflowTitle: "AI 与应用如何配合", workflow: ["下载训练协议，在您选择的外部 AI 工具中完成首轮训练。", "让 AI 使用整理模板输出结构化 JSON；核对内容，并移除不希望提供的个人信息。", "回到 NextRound 预览导入，再进行本地复练、编辑和记录。"],
     privacyTitle: "数据留在哪里", privacy: "业务记录保存在当前浏览器来源的 IndexedDB。应用没有账号、云同步、内置模型调用、统计埋点或自动上传业务记录。向外部 AI 提供材料是用户主动操作，适用该服务的规则。", risk: "清除浏览器站点数据、使用隐私窗口或更换设备可能让您无法继续访问原记录。完整 JSON 备份未加密，请妥善保管并定期导出。",
     exampleTitle: "先用虚构示例试一遍", example: "示例包含三道完全虚构题，覆盖天堂、人间、地狱，不需要提供真实简历。下载后在应用的 JSON 导入入口预览确认，再进入训练室。", download: "下载虚构 JSON 示例", guide: "阅读示例说明", protocol: "下载 AI 训练协议", template: "下载 AI 整理模板",
-    limitsTitle: "当前边界", limits: "当前没有独立的熟练度算法或间隔重复系统；自评由用户填写。Ritual 入口仍在建设中。真实手机传感器、真实麦克风、操作系统安装及生产部署仍需对应环境验证。", license: "代码采用 MIT；插画、BGM 和品牌素材按独立条款随本项目分发。", licensing: "查看素材条款", version: "应用版本"
+    limitsTitle: "当前边界", limits: "当前没有独立的熟练度算法或间隔重复系统；自评由用户填写。Ritual 入口仍在建设中。真实手机传感器、真实麦克风与操作系统安装仍需对应环境验证。", license: "代码采用 MIT；插画、BGM 和品牌素材按独立条款随本项目分发。", licensing: "查看素材条款", version: "应用版本"
   },
   en: {
     lang: "en", locale: "en_US", title: "NextRound | Local interview practice and preparation workspace",
@@ -31,7 +45,7 @@ const copy = {
     workflowTitle: "How AI and the app work together", workflow: ["Download the training protocol and practice in an external AI tool of your choice.", "Ask that tool to produce structured JSON with the organization template. Review the content and remove information you do not want to share.", "Preview and confirm the import in NextRound, then rehearse, edit and review locally."],
     privacyTitle: "Where your data stays", privacy: "Business records are stored in IndexedDB for the current browser origin. The app has no account, cloud sync, built-in model API, analytics or automatic upload of business records. Sharing materials with an external AI is your own action and is subject to that service's rules.", risk: "Clearing site data, using private browsing or changing devices can remove access to your records. Full JSON backups are not encrypted: keep them secure and export them regularly.",
     exampleTitle: "Try a fictional example first", example: "The example contains three entirely fictional questions at Heaven, Human and Hell difficulty. No real resume is required. Download it, preview and confirm it in the app's JSON import flow, then open the training room.", download: "Download fictional JSON", guide: "Read the example guide", protocol: "Download the AI training protocol", template: "Download the AI organization template",
-    limitsTitle: "Current boundaries", limits: "There is no independent mastery algorithm or spaced repetition system; self-ratings are entered manually. Ritual is still under construction. Real phone sensors, real microphones, OS installation and the production deployment require checks in their target environments.", license: "Code is MIT-licensed. Illustrations, BGM and branding use separate project-scoped asset terms.", licensing: "Read the asset terms", version: "Application version"
+    limitsTitle: "Current boundaries", limits: "There is no independent mastery algorithm or spaced repetition system; self-ratings are entered manually. Ritual is still under construction. Real phone sensors, real microphones and OS installation require checks in their target environments.", license: "Code is MIT-licensed. Illustrations, BGM and branding use separate project-scoped asset terms.", licensing: "Read the asset terms", version: "Application version"
   }
 };
 function metadata(site, route, language, version) {
@@ -48,13 +62,14 @@ export async function seoArtifacts(directory) {
   const config = JSON.parse(await readFile(path.join(directory, "seo.config.json"), "utf8"));
   const site = productionUrl(process.env.NEXTROUND_SITE_URL || config.siteUrl);
   if (config.searchAccess !== "allow" || !["disallow", "allow"].includes(config.trainingAccess)) throw new Error("Unsupported crawler policy");
+  const verification = verificationMetadata(config.verification);
   const { version } = JSON.parse(await readFile(path.join(directory, "package.json"), "utf8"));
   const files = new Map();
   files.set("seo.config.json", Buffer.from(JSON.stringify({ ...config, siteUrl: site.href }, null, 2) + "\n"));
   let index = await readFile(path.join(directory, "index.html"), "utf8");
   index = index.replace(/\s*<!-- nextround:seo:start -->[\s\S]*?<!-- nextround:seo:end -->\s*/g, "\n");
   index = index.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${escape(copy.zh.description)}">`);
-  index = index.replace("</head>", `    <!-- nextround:seo:start -->\n    ${metadata(site, "", "zh", version)}\n    <!-- nextround:seo:end -->\n  </head>`);
+  index = index.replace("</head>", `    <!-- nextround:seo:start -->\n    ${metadata(site, "", "zh", version)}${verification}\n    <!-- nextround:seo:end -->\n  </head>`);
   files.set("index.html", Buffer.from(index));
   files.set("about/index.html", Buffer.from(introPage(site, "zh", version)));
   files.set("en/index.html", Buffer.from(introPage(site, "en", version)));

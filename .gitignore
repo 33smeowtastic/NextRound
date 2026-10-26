@@ -203,3 +203,5 @@ dist/
 !/.gitattributes
 
 !/docs/releases/v1.0.0.md
+
+!/docs/releases/v1.0.1.md
