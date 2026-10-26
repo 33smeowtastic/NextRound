@@ -38,7 +38,7 @@ const copy = {
   },
   en: {
     lang: "en", locale: "en_US", title: "NextRound | Local interview practice and preparation workspace",
-    description: "Turn external AI interview conversations into local preparation assets you can validate, trace and rehearse. Organize roles, questions, recordings, reviews and full backups.",
+    description: "Turn external AI interview practice into local, traceable preparation. Organize roles, questions, recordings and reviews, with full backups.",
     action: "Open NextRound", eyebrow: "NextRound", heading: "Keep interview preparation ready for the next rehearsal.",
     intro: "NextRound is a local-first, offline-capable workspace for personal interview preparation, including company applications and public-sector recruitment. The app interface is primarily Chinese; the open-source README provides complete Chinese and English instructions.",
     featuresTitle: "What is available", features: ["Organize roles, organizations, questions, answers, introductions and reusable content cards.", "Practice questions at Heaven, Human and Hell difficulty, use timers and local recordings, and save manual self-ratings and reviews.", "Connect actual interview questions with preparation records, trace feedback and compare opportunities using transparent rules.", "Preview unified JSON before import and preserve duplicate/conflict boundaries. Full backups include recordings and attachments."],

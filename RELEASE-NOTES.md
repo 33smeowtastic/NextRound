@@ -1,5 +1,6 @@
 # NextRound 1.0.1 — SEO verification / 搜索验证补丁
 
+- 英文搜索摘要精简为140字符，记录Google/Bing验证、站点地图及单页索引请求的真实回执。 / Shorten the English search description and record accepted ownership, sitemap and indexing requests.
 - 正式站点 / Site: https://nextround.apps.brothforge.com/
 - 版本分支 / Version branch: `codex/release-v1.0.1`.
 - Google/Bing 首页所有权标签，以及可选百度标签的严格校验。标签为公开验证值，不是API密钥。 / Public homepage ownership tags with strict provider/token validation.

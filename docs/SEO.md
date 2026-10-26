@@ -37,7 +37,7 @@ npm run build:source
 2. 在禁用 JavaScript 的浏览器或直接 HTTP 响应中读到完整两种语言的说明；canonical/hreflang/sitemap 使用同一正式 HTTPS 来源。
 3. 检查 CDN/WAF 是否给正常检索机器人返回验证码、403/429 或空页面。若要调整生产安全策略，先明确规则对象和影响；本轮没有修改这些设置。
 4. 由站点所有者在 Google Search Console、Bing Webmaster Tools 和百度搜索资源平台完成验证，并通过账号可用入口提交/诊断。百度权限与提交入口按账号实际可见为准，不假定所有账号都有相同 sitemap 权限。
-5. 监测抓取诊断、索引状态和服务端请求；Bing 可按需要再配置 IndexNow，不在本轮自动向外部平台提交 URL。无法保证各引擎抓取时间、收录或生成式答案引用。
+5. 监测抓取诊断、索引状态和服务端请求；Bing 可按需要再配置 IndexNow；本轮通过已登录的站长平台提交公开 URL。无法保证各引擎抓取时间、收录或生成式答案引用。
 
 发布前的只读探测曾观察到 HTTP 503 和 HTTPS 握手失败；正式部署后 DNS/TLS 已生效，HTTP 跳转 HTTPS，公开页面/robots/sitemap 已通过验证。历史失败不代表当前状态。
 
@@ -58,3 +58,12 @@ npm run build:source
 `seo.config.json` 的 `verification` 可配置 `google`、`bing`、`baidu` 公共所有权token，只写入首页head，成功验证后应保留。禁止填写API推送密钥、登录凭据或个人资料；未知字段和非法token拒绝构建。未引入统计/跟踪脚本。
 
 Google和Bing的站点验证与提交由维护者已登录的站长平台执行；具体接受状态以平台回执为准，提交不等于已收录。百度登录及资料完善后仍要求账号实名认证，按维护者选择暂不提交；没有把个人联系资料放入源码或站点包。
+
+## 本次平台回执（2026-10-26）
+
+- Google Search Console：正式 HTTPS URL-prefix 资源所有权验证通过；`sitemap.xml` 状态“成功”，发现 3 个网页。首页、`/about/`、`/en/` 的单页请求均收到“已请求编入索引”回执，进入优先抓取队列。首页实时测试显示“网址可编入 Google 索引”。最初的临时提交错误经重试恢复，不等于已经收录。
+- Bing Webmaster Tools：正式站点所有权验证通过；站点地图已接受并处理中；三个公开页面的单页请求均收到“URL submitted successfully”回执。三页实时测试均可索引；旧索引记录尚未更新，不能据此声称收录完成。英文摘要按实时提示精简至 140 字符。首页的图片提示对应已有 `alt=""` 的装饰图及有文字等价内容的标题图，保留其无障碍语义。平台的 markup insights 未成功加载，不作为结构化数据已被平台认可的证据。
+- 百度：因要求账号实名认证，按维护者选择暂缓添加及提交；没有撤销公开抓取允许规则。联系资料仅在百度账号中，不进入项目源码、构建或发布包。
+- AI 检索：规则及 HTTP 探测通过，不保证实际官方爬虫访问、平台收录或 AI 引用。未找到可可靠拆分豆包/Kimi训练与检索用途的官方 UA，不虚构专用规则。
+
+Google and Bing ownership checks passed. Both accepted the sitemap; Google reported success and discovered all three public pages, while Bing was still processing it. All three URLs received individual indexing-request receipts from both platforms. Live checks confirmed indexability, but actual indexing and AI citations remain unconfirmed. Baidu submission is deferred at the maintainer's choice; its public crawling remains allowed. The English description is shortened to 140 characters. Account contact details are excluded from source and release artifacts.

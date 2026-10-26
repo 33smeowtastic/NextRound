@@ -6,6 +6,7 @@ This file records version changes. The application version comes from `package.j
 
 ## 1.0.1
 
+- 英文搜索摘要精简为140字符，记录Google/Bing验证、站点地图及单页索引请求的真实回执。 / Shorten the English search description and record accepted ownership, sitemap and indexing requests.
 - 首页输出 Google/Bing 公开所有权验证标签，支持严格校验的可选百度标签；不添加统计脚本或业务数据上传。 / Publish Google/Bing ownership tags, with strictly validated optional Baidu support; no analytics or business-data upload.
 - 上线后复核搜索/AI检索可访问性，保留训练爬虫限制。百度提交按维护者选择暂缓实名认证。 / Recheck search/AI retrieval access and retain training restrictions; Baidu submission is deferred at the maintainer's choice.
 - 按版本分支部署验收后合并main；首发v1.0.0保留。 / Verify the deployed version branch before merging main; preserve v1.0.0.
