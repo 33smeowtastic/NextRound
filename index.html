@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN" data-starting data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <script>
+      (() => {
+        let theme = "light";
+        try { if (localStorage.getItem("nextround-theme") === "dark") theme = "dark"; } catch {}
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <meta name="description" content="将外部 AI 面试对话沉淀为可校验、可追溯、可复练的本地准备资产。支持岗位、题库、训练录音、面试复盘与完整备份。">
+    <title>下一场 · NextRound</title>
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <style id="startup-surface">
+      :root {
+        --startup-bg: #101010;
+        --startup-fg: #eee2cd;
+        --startup-muted: #b9b7b2;
+        --startup-accent: #bff55c;
+        --startup-progress: #bff55c;
+        --startup-track: #bff55c29;
+        --startup-border: #66685c;
+      }
+      html[data-starting],
+      html[data-starting] body {
+        margin: 0;
+        background: var(--startup-bg);
+        color: var(--startup-fg);
+      }
+      #startup-loading {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        padding: 32px 24px;
+        background: var(--startup-bg);
+        color: var(--startup-fg);
+        text-align: center;
+      }
+      #startup-loading [hidden] {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="./startup.css" />
+    <link rel="stylesheet" href="./style.css?v=grain-4" />
+    <link rel="stylesheet" href="./poster.css?v=guide-polish-20261025" />
+    <link rel="stylesheet" href="./corner-ui.css?v=guide-polish-20261025" />
+    <link rel="stylesheet" href="./shell-ui.css?v=grain-4" />
+    <link rel="stylesheet" href="./knowledge-ui.css?v=job-v4-2" />
+    <link rel="stylesheet" href="./help-ui.css?v=job-v4-2" />
+    <link rel="stylesheet" href="./ui-refinements.css?v=guide-polish-20261025" />
+    <link rel="stylesheet" href="./unified-import.css?v=unified-1" />
+    <link rel="stylesheet" href="./duality.css?v=guide-polish-20261025" />
+    <link rel="stylesheet" href="./review-ui.css?v=guide-polish-20261025" />
+    <link rel="stylesheet" href="./chrome-review.css?v=guide-polish-20261025" />
+    <link rel="stylesheet" href="./ui-standards.css?v=ui-standards-20261026" />
+    <!-- nextround:seo:start -->
+    <link rel="canonical" href="https://nextround.apps.brothforge.com/"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:site_name" content="NextRound"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="下一场 NextRound｜本地面试训练与备考工作区"><meta property="og:description" content="将外部 AI 面试对话沉淀为可校验、可追溯、可复练的本地准备资产。支持岗位、题库、训练录音、面试复盘与完整备份。"><meta property="og:url" content="https://nextround.apps.brothforge.com/"><meta property="og:image" content="https://nextround.apps.brothforge.com/assets/icon-512.png"><meta name="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"NextRound","url":"https://nextround.apps.brothforge.com/","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","softwareVersion":"1.0.0","description":"将外部 AI 面试对话沉淀为可校验、可追溯、可复练的本地准备资产。支持岗位、题库、训练录音、面试复盘与完整备份。","inLanguage":"zh-CN","isAccessibleForFree":true}</script>
+    <!-- nextround:seo:end -->
+  </head>
+  <body>
+    <!-- THESIS: Classical layered portal with independent angel, fallen-angel and wizard cutouts. Light uses ivory, silver and antique gold; dark uses black chrome and green. Shared scene coordinates register the visible eyes, halo and portal across themes. Interview opens the local workspace; Ritual remains in construction. See DESIGN.md for the current shipped contract and docs/UI-VERIFICATION.md for evidence. -->
+    <section id="startup-loading" aria-label="下一场加载">
+      <svg
+        class="startup-mark"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect width="24" height="24" rx="5.25" fill="#12110f" />
+        <g stroke="#fff" stroke-linecap="round">
+          <path d="M15.5 18.694A8 8 0 1 0 8.5 18.694" stroke-width=".94" />
+          <path
+            d="M14.35 16.333A5.375 5.375 0 1 0 9.65 16.333"
+            stroke-width=".94"
+          />
+        </g>
+        <path
+          d="M9.875 19.125h4.25"
+          stroke="#bff55c"
+          stroke-width=".94"
+          stroke-linecap="round"
+        />
+      </svg>
+      <p class="startup-title">下一场 · NextRound</p>
+      <div class="startup-progress-wrap">
+        <div
+          class="startup-progress"
+          role="progressbar"
+          aria-label="首屏准备进度"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span data-startup-fill></span>
+        </div>
+        <div class="startup-meta">
+          <p
+            class="startup-message"
+            data-startup-message
+            role="status"
+            aria-live="polite"
+          >
+            正在打开下一场
+          </p>
+          <span class="startup-percent" data-startup-percent aria-hidden="true"
+            >0%</span
+          >
+        </div>
+      </div>
+      <p class="startup-note" data-startup-note>准备 · 训练 · 记录 · 复盘</p>
+      <p class="startup-detail" data-startup-detail hidden></p>
+      <div class="startup-actions">
+        <button type="button" data-startup-retry hidden>重新打开</button
+        ><button type="button" data-startup-continue hidden>先进入</button>
+      </div>
+      <noscript
+        ><p class="startup-note">
+          请启用 JavaScript 后重新打开，本地档案保留在此浏览器中。<br><a href="./about/">也可先阅读产品介绍与使用说明（无需 JavaScript）</a>
+        </p></noscript
+      >
+    </section>
+    <div id="app" inert aria-hidden="true" aria-busy="true"></div>
+    <script src="./startup.js"></script>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <input
+      id="import-file"
+      type="file"
+      accept="application/json,.json"
+      hidden
+    />
+    <input id="v4-import-file" type="file" accept="application/json,.json" hidden />
+    <input id="unified-import-file" type="file" accept="application/json,.json" hidden />
+    <script type="module" src="./app.js?v=guide-polish-20261025"></script>
+    <script type="module" src="./themed-controls.js?v=unified-1"></script>
+    <script type="module" src="./portal-motion.js?v=guide-polish-20261025"></script>
+  </body>
+</html>

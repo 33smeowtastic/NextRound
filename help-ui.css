@@ -1,0 +1,37 @@
+/* Quiet contextual explanations shared by workspace controls and forms. */
+.inline-help { display:inline-flex; align-items:center; vertical-align:middle; line-height:1; margin-inline:2px; }
+.help-trigger { display:inline-flex; align-items:center; justify-content:center; flex:none; width:32px; height:32px; padding:6px; border:0; border-radius:50%; color:var(--muted,#716658); background:transparent; vertical-align:middle; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.help-trigger svg { width:19px; height:19px; pointer-events:none; flex:none; }
+.help-trigger:hover, .help-trigger[aria-expanded="true"] { color:var(--ink,#302a23); background:var(--wash,#e9e2d6); }
+.help-trigger:focus-visible { outline:2px solid #8d7654; outline-offset:2px; }
+.help-popover { display:none; position:fixed; inset:auto; z-index:10010; box-sizing:border-box; width:min(320px,calc(100vw - 24px)); max-width:calc(100vw - 24px); max-height:calc(100dvh - 24px); margin:0; padding:13px 15px; overflow:auto; overscroll-behavior:contain; border:1px solid var(--line,#dfd6c9); border-radius:8px; background:var(--surface,#fbf8f2); color:var(--ink,#302a23); box-shadow:0 8px 26px #302a231c; font:400 12px/1.7 var(--sans,"Segoe UI","Microsoft YaHei",sans-serif); text-align:left; white-space:pre-line; overflow-wrap:anywhere; letter-spacing:normal; cursor:auto; }
+.help-popover[data-help-open="true"] { display:block; }
+.help-popover:popover-open { display:block; }
+.help-popover::backdrop { background:transparent; pointer-events:none; }
+@media(max-width:780px), (pointer:coarse) { .help-trigger { width:44px; height:44px; padding:12px; } }
+@media(forced-colors:active) { .help-popover { border-color:CanvasText; } .help-trigger[aria-expanded="true"] { outline:1px solid ButtonText; } }
+
+/* Keep each operation and its explanation together when action rows wrap. */
+.action-with-help { display:inline-flex; align-items:center; flex:0 0 auto; gap:2px; max-width:100%; white-space:nowrap; }
+.action-with-help > .inline-help { flex:none; margin:0; }
+.knowledge-page > .page-head > .button-row { flex-wrap:nowrap; gap:4px; }
+.knowledge-page > .page-head > .button-row > .inline-help { flex:none; margin:0; }
+
+/* The card-editor explanation shares the first label's line, rather than
+   adding an otherwise empty row above the form. Its hit target stays intact. */
+.editor-help-actions { position:relative; z-index:1; display:flex; justify-content:flex-end; height:0; margin:0; }
+.editor-help-actions > .inline-help { flex:none; align-self:flex-start; height:32px; margin:0; transform:translateY(-6px); }
+.editor-help-actions + .content-card-form { margin-top:0; }
+.editor-help-actions + .content-card-form > label:first-child { row-gap:12px; }
+
+:is(.panel h2, .composition-heading h3, .composition-column-heading h4):has(> .inline-help) { display:flex; align-items:center; gap:4px; }
+:is(h2,h3,h4) > .inline-help { flex:none; margin:0; }
+.composition-heading:has(h3 > .inline-help) { align-items:center; padding-bottom:12px; }
+.composition-full .composition-column-heading:has(h4 > .inline-help) { margin-bottom:6px; }
+@media(max-width:780px), (pointer:coarse) { .editor-help-actions > .inline-help { height:44px; transform:translateY(-14px); } }
+
+
+body:has(.shell) .help-trigger { color:#bfb19b; }
+body:has(.shell) .help-trigger:is(:hover,[aria-expanded="true"]) { color:#f0d5aa; background:#332d22; }
+body:has(.shell) .help-trigger:focus-visible { outline-color:#d4b787; }
+body:has(.shell) .help-popover { background:#282720; color:#e9e0d1; border-color:#77674e; box-shadow:0 8px 26px #0007; }

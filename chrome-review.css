@@ -1,0 +1,31 @@
+/* Move the complete utility group down by using the space previously reserved
+   below it. The local-space note stays intact, directly above the actions. */
+body:has(.shell) .shell .sidebar .side-bottom {display:flex;flex-direction:column;}
+body:has(.shell) .shell .sidebar .side-local {
+  order:-1;
+  margin:0 12px 8px;
+  padding-top:6px;
+  line-height:1.4;
+}
+body:has(.shell) .shell .sidebar .side-local small {margin-top:3px;line-height:1.4;}
+@media(max-width:780px) {
+  /* Preserve room for the note when a short rail needs its existing scroll. */
+  body:has(.shell) .shell .sidebar>.nav {margin-bottom:48px;}
+  body:has(.shell) .shell .sidebar .side-bottom {
+    height:184px;
+    min-height:184px;
+    padding:0;
+  }
+  body:has(.shell) .shell .sidebar .side-utilities {gap:0;}
+  body:has(.shell) .shell .sidebar .side-utilities :is(.nav-utility,a) {
+    height:44px;
+    min-height:44px;
+  }
+  body:has(.shell) .shell .sidebar .side-local {
+    top:-48px;
+    height:40px;
+    margin:0;
+    padding-top:6px;
+    line-height:1.4;
+  }
+}

@@ -1,0 +1,1542 @@
+/* v3 crafted: reference-led engraved poster. UI and figures occupy separate rows. */
+@font-face {
+  font-family: NextRoundAntiqua;
+  src: url("./assets/v3-craft/fell-italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+.portal-crafted {
+  --poster-gutter: clamp(36px, 4.4vw, 88px);
+  --card-height: clamp(166px, 11.5vw, 212px);
+  --poster-ivory: #e9d9ba;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding: 0 var(--poster-gutter) 96px;
+  background: #090908;
+  color: var(--poster-ivory);
+  overflow: hidden;
+}
+.poster-ground {
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  background: #090908;
+  pointer-events: none;
+}
+.poster-patina {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: url("./assets/v3-craft/patina.webp") center/940px auto;
+  mix-blend-mode: screen;
+  opacity: 0.12;
+}
+.poster-frame {
+  position: absolute;
+  inset: 8px;
+  z-index: 8;
+  pointer-events: none;
+  border: 0;
+  background: none;
+  opacity: 0.7;
+  filter: saturate(0.4);
+  border-image-source: url("./assets/v3-craft/frame-engraved.webp");
+  border-image-slice: 145 210;
+  border-image-width: 85px 115px;
+  border-image-repeat: stretch;
+}
+.poster-stage {
+  position: relative;
+  isolation: isolate;
+  height: calc(100svh - var(--card-height) - 114px);
+  min-height: 500px;
+  margin: 0 calc(-1 * var(--poster-gutter));
+}
+.poster-architecture {
+  display: none;
+}
+.poster-stage:after {
+  content: none;
+}
+.poster-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: visible;
+  pointer-events: none;
+  mix-blend-mode: normal;
+}
+.scene-subject {
+  aspect-ratio: 16/9;
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  right: 1.5%;
+  height: min(112%, 44.5vw);
+  transform: translateY(9.4%);
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+}
+.portal-intro {
+  position: absolute;
+  z-index: 3;
+  top: clamp(78px, 8.8vh, 118px);
+  left: var(--poster-gutter);
+  max-width: 63%;
+}
+.wordmark {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+}
+.portal-intro h1 {
+  position: relative;
+  width: clamp(620px, 49vw, 1040px);
+  height: auto;
+  aspect-ratio: 3.5;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: #ecddbf;
+  overflow: hidden;
+  -webkit-text-fill-color: currentColor;
+}
+.wordmark-art {
+  position: absolute;
+  left: -0.954401%;
+  top: -18.476499%;
+  width: 101.802757%;
+  height: 132.73906%;
+  max-width: none;
+  object-fit: fill;
+}
+
+.poster-name {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  margin: 12px 0 0 4px;
+}
+.poster-name > span {
+  font:
+    600 clamp(38px, 3.6vw, 69px)/1.25 NextRoundSerifSC,
+    "Noto Serif SC",
+    serif;
+  letter-spacing: 0.25em;
+  color: #e9d7b5;
+}
+.poster-star {
+  width: 23px;
+  height: 23px;
+  color: #c7aa75;
+  flex-shrink: 0;
+}
+.poster-name .poster-star {
+  width: 28px;
+  height: 28px;
+}
+.poster-rule {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: clamp(250px, 24vw, 430px);
+  margin: 26px 0 21px;
+}
+.poster-rule span {
+  height: 1px;
+  flex: 1;
+  background: #b6996788;
+}
+.poster-rule .poster-star {
+  width: 9px;
+  height: 9px;
+}
+.poster-caption p {
+  font: 400 13px/1.9 var(--sans);
+  letter-spacing: 0.2em;
+  color: #d7c3a0;
+  margin: 0;
+}
+.poster-caption > span {
+  display: block;
+  font:
+    italic 16px/1.65 NextRoundAntiqua,
+    Georgia,
+    serif;
+  letter-spacing: 0.08em;
+  color: #b8a27e;
+  margin-top: 12px;
+}
+.poster-side-note {
+  position: absolute;
+  right: calc(var(--poster-gutter) - 14px);
+  top: 36%;
+  writing-mode: vertical-rl;
+  font: 400 8px/1 var(--sans);
+  letter-spacing: 0.3em;
+  color: #b29a7077;
+}
+.atlas-orbit {
+  position: absolute;
+  z-index: -1;
+  width: 46%;
+  aspect-ratio: 1;
+  left: 30%;
+  top: 10%;
+  border: 1px solid #b4935b27;
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  pointer-events: none;
+}
+.atlas-orbit i {
+  position: absolute;
+  inset: 6%;
+  border: 1px dashed #c1a36e20;
+  border-radius: 50%;
+}
+.atlas-orbit i:nth-child(2) {
+  inset: 14%;
+  border-style: solid;
+  opacity: 0.6;
+}
+.atlas-orbit span {
+  position: absolute;
+  top: 1%;
+  left: 30%;
+  width: 20px;
+  height: 20px;
+  animation: atlas-signal 9s ease-in-out infinite;
+}
+.atlas-orbit .poster-star {
+  width: 20px;
+  height: 20px;
+}
+.entrances {
+  position: relative;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 26px;
+  margin-top: 18px;
+}
+.entrance {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 36% minmax(0, 1fr) 58px;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+  height: var(--card-height);
+  padding: 25px 31px 25px 0;
+  background: #100f0def;
+  border: 0;
+  border-radius: 0;
+  clip-path: polygon(
+    13px 0,
+    calc(100% - 13px) 0,
+    100% 13px,
+    100% calc(100% - 13px),
+    calc(100% - 13px) 100%,
+    13px 100%,
+    0 calc(100% - 13px),
+    0 13px
+  );
+}
+.entrance:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #08080744;
+  pointer-events: none;
+}
+.entry-frame {
+  position: absolute;
+  inset: 1px;
+  z-index: 5;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  color: #c4a773;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.entry-ornament {
+  position: absolute;
+  inset: 3px;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.72;
+  filter: saturate(0.3);
+  border-image-source: url("./assets/v3-craft/frame-engraved.webp");
+  border-image-slice: 145 210;
+  border-image-width: 31px 40px;
+  border-image-repeat: stretch;
+}
+.entry-portrait {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  filter: grayscale(0.6) contrast(1.07) brightness(0.95);
+  mask-image: linear-gradient(90deg, #000 0, #000 65%, transparent 100%);
+}
+.knight-portrait {
+  width: 39%;
+  height: 170%;
+  object-fit: contain;
+  object-position: left top;
+  opacity: 0.93;
+}
+.oracle-portrait {
+  width: 40%;
+  height: 115%;
+  top: -3%;
+  object-fit: cover;
+  object-position: 50% 0;
+  opacity: 0.79;
+}
+.entry-orbit {
+  position: absolute;
+  z-index: -2;
+  top: 50%;
+  left: 1%;
+  width: 37%;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border: 1px solid #b99b615c;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.entry-orbit:before,
+.entry-orbit:after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border: 1px dashed #b99b613b;
+  border-radius: 50%;
+}
+.entry-orbit:after {
+  inset: 17%;
+  border-style: solid;
+}
+.entry-heading {
+  text-align: right;
+  justify-items: end;
+  grid-column: 2;
+  min-width: 0;
+  align-self: center;
+  display: grid;
+  grid-template-rows: clamp(48px, 4.2vw, 74px) 30px 21px;
+  align-content: center;
+}
+.entry-heading h2 {
+  display: flex;
+  justify-content: flex-end;
+  align-self: start;
+  width: 100%;
+  height: var(--entry-title-height, clamp(40px, 3.6vw, 67px));
+  margin: 0;
+  padding: 0;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+.card-title-art {
+  position: relative;
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+.card-title-interview {
+  aspect-ratio: 3.75;
+}
+.card-title-ritual {
+  aspect-ratio: 2.95;
+}
+.card-title-art img {
+  position: absolute;
+  max-width: none;
+  object-fit: fill;
+}
+.card-title-interview img {
+  left: -2.892157%;
+  top: -16.636852%;
+  width: 106.470588%;
+  height: 129.516995%;
+}
+.card-title-ritual img {
+  left: -14.867257%;
+  top: -11.714771%;
+  width: 128.141593%;
+  height: 122.920204%;
+}
+
+.entry-heading p {
+  font:
+    600 clamp(12px, 1.15vw, 21px)/1.65 NextRoundSerifSC,
+    "Noto Serif SC",
+    serif;
+  letter-spacing: 0.05em;
+  color: #d9c39d;
+  margin: 0;
+  white-space: nowrap;
+}
+.entry-heading small {
+  font: 400 11px/1.6 var(--sans);
+  letter-spacing: 0.03em;
+  color: #baa580;
+  white-space: nowrap;
+}
+.entry-cta {
+  position: relative;
+  grid-column: 3;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  background: transparent;
+  color: #ead4ad;
+  border: 1px solid #c0a16a;
+  border-radius: 50%;
+  box-shadow: none;
+  transition:
+    background 0.22s,
+    border-color 0.22s;
+}
+.entry-cta:before {
+  content: "";
+  position: absolute;
+  left: -17px;
+  top: -22px;
+  bottom: -22px;
+  width: 1px;
+  background: #ad906457;
+}
+.entry-cta svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.22s;
+}
+.entry-cta:hover {
+  background: #c2a16d24;
+  border-color: #e7cea4;
+}
+.entry-cta:hover svg {
+  transform: translateX(3px);
+}
+.entry-cta:focus-visible {
+  outline: 2px solid #e9cca0;
+  outline-offset: 4px;
+}
+.entry-star {
+  position: absolute;
+  top: 14px;
+  left: 38%;
+  width: 12px;
+  height: 12px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+.ritual-entry .entry-heading {
+  opacity: 0.79;
+}
+.entry-cta.disabled {
+  color: #baa98c;
+  border-color: #998567;
+  opacity: 0.6;
+  cursor: default;
+}
+.poster-demo {
+  position: absolute;
+  z-index: 9;
+  right: var(--poster-gutter);
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: #c1ad8b;
+  font: 400 11px/1.6 var(--sans);
+  padding: 5px 0;
+  border: 0;
+}
+.poster-demo svg {
+  width: 18px;
+  height: 18px;
+}
+.poster-demo:hover {
+  color: #f4e1bd;
+}
+.poster-demo:focus-visible {
+  outline: 1px solid #d9bd8e;
+  outline-offset: 5px;
+}
+html[data-motion="off"] .portal-crafted *,
+html[data-motion="off"] .portal-crafted:before,
+html[data-motion="off"] .portal-crafted:after {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+@keyframes atlas-signal {
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+@media (min-width: 1750px) {
+  .poster-caption p {
+    font-size: 14px;
+  }
+  .poster-caption > span {
+    font-size: 17px;
+  }
+  .entry-heading {
+    grid-template-rows: 76px 35px 23px;
+  }
+}
+@media (max-width: 1180px) {
+  .portal-crafted {
+    --poster-gutter: 40px;
+    --card-height: 163px;
+  }
+  .portal-intro {
+    top: 82px;
+    max-width: 68%;
+  }
+  .portal-intro h1 {
+    font-size: clamp(112px, 11vw, 140px);
+  }
+  .poster-name {
+    margin-top: 23px;
+    gap: 24px;
+  }
+  .poster-name > span {
+    font-size: 41px;
+  }
+  .poster-rule {
+    margin: 20px 0 15px;
+    width: 250px;
+  }
+  .poster-caption p {
+    font-size: 11px;
+  }
+  .poster-caption > span {
+    font-size: 14px;
+  }
+  .scene-subject {
+    right: -13%;
+    height: min(108%, 53vw);
+    top: auto;
+  }
+  .entrances {
+    gap: 20px;
+  }
+  .entrance {
+    grid-template-columns: 33% minmax(0, 1fr) 48px;
+    gap: 11px;
+    padding: 20px 23px 20px 0;
+  }
+  .entry-heading {
+    grid-template-rows: 48px 26px 21px;
+  }
+  .entry-heading h2 {
+    font-size: 45px;
+  }
+  .entry-heading p {
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .entry-cta {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .entry-cta:before {
+    left: -12px;
+  }
+  .entry-star {
+    left: 34%;
+    top: 12px;
+    width: 10px;
+    height: 10px;
+  }
+}
+@media (min-width: 781px) and (max-height: 800px) {
+  .portal-crafted {
+    --card-height: 158px;
+    padding-bottom: 90px;
+  }
+  .poster-stage {
+    height: calc(100svh - var(--card-height) - 108px);
+    min-height: 470px;
+  }
+  .portal-intro {
+    top: 76px;
+  }
+  .portal-intro h1 {
+    font-size: clamp(120px, 11.8vw, 180px);
+  }
+  .poster-name {
+    margin-top: 22px;
+  }
+  .poster-name > span {
+    font-size: 42px;
+  }
+  .poster-rule {
+    margin: 19px 0 13px;
+  }
+  .poster-caption > span {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+  .entry-heading {
+    grid-template-rows: 50px 28px 21px;
+  }
+  .entry-heading h2 {
+    font-size: 49px;
+  }
+  .entry-heading p {
+    font-size: 15px;
+  }
+}
+@media (max-width: 780px) {
+  .portal-crafted {
+    --poster-gutter: 26px;
+    --card-height: 148px;
+    padding: 0 26px 96px;
+  }
+  .poster-frame {
+    inset: 7px;
+    border-image-width: 61px 60px;
+    opacity: 0.62;
+  }
+  .poster-stage {
+    height: 620px;
+    min-height: 0;
+  }
+  .poster-ground {
+    background-size: auto 600px;
+    opacity: 0.38;
+  }
+  .poster-architecture {
+    background-position: 48% bottom;
+    background-size: auto 600px;
+    opacity: 0.48;
+  }
+  .portal-intro {
+    top: 84px;
+    max-width: calc(100% - 52px);
+  }
+  .portal-intro h1 {
+    font-size: clamp(83px, 17.2vw, 133px);
+  }
+  .poster-name {
+    gap: 25px;
+    margin: 28px 0 0 2px;
+  }
+  .poster-name > span {
+    font-size: 34px;
+    letter-spacing: 0.22em;
+  }
+  .poster-name .poster-star {
+    width: 21px;
+    height: 21px;
+  }
+  .poster-rule {
+    margin: 18px 0 14px;
+    width: 200px;
+  }
+  .poster-caption p {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+  .poster-caption > span {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 9px;
+  }
+  .poster-scene {
+    mix-blend-mode: screen;
+  }
+  .scene-subject {
+    height: 390px;
+    transform: none;
+    width: auto;
+    top: auto;
+    bottom: 0;
+    right: 0;
+  }
+  .atlas-orbit {
+    width: 105%;
+    left: -15%;
+    top: 30%;
+    opacity: 0.5;
+  }
+  .poster-side-note {
+    display: none;
+  }
+  .entrances {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 17px;
+    margin-top: 14px;
+  }
+  .entrance {
+    grid-template-columns: 34% minmax(0, 1fr) 46px;
+    gap: 9px;
+    padding: 17px 21px 17px 0;
+  }
+  .entry-heading {
+    grid-template-rows: 45px 25px 21px;
+  }
+  .entry-heading h2 {
+    font-size: 40px;
+  }
+  .entry-heading p {
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .entry-heading small {
+    font-size: 11px;
+  }
+  .knight-portrait {
+    width: 40%;
+    height: 165%;
+  }
+  .oracle-portrait {
+    width: 40%;
+    height: 115%;
+  }
+  .entry-cta {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .entry-cta:before {
+    top: -16px;
+    bottom: -16px;
+    left: -10px;
+  }
+  .entry-cta svg {
+    width: 21px;
+    height: 21px;
+  }
+  .entry-ornament {
+    border-image-width: 24px 27px;
+    opacity: 0.65;
+  }
+  .entry-star {
+    left: 36%;
+    width: 9px;
+    height: 9px;
+    top: 11px;
+  }
+  .poster-demo {
+    font-size: 10px;
+    bottom: 36px;
+    right: 26px;
+  }
+}
+@media (max-width: 450px) {
+  .portal-crafted {
+    --card-height: 136px;
+  }
+  .poster-stage {
+    height: 550px;
+  }
+  .portal-intro h1 {
+    font-size: clamp(75px, 20vw, 88px);
+  }
+  .poster-name > span {
+    font-size: 32px;
+  }
+  .poster-name {
+    margin-top: 26px;
+  }
+  .poster-rule {
+    margin-top: 17px;
+    margin-bottom: 12px;
+  }
+  .poster-caption > span {
+    font-size: 12px;
+  }
+  .scene-subject {
+    height: auto;
+    width: 125%;
+    right: -13%;
+    bottom: -4%;
+  }
+  .entrance {
+    grid-template-columns: 32% minmax(0, 1fr) 44px;
+    padding-right: 17px;
+    gap: 8px;
+  }
+  .entry-heading {
+    grid-template-rows: 40px 23px 20px;
+  }
+  .entry-heading h2 {
+    font-size: 35px;
+  }
+  .entry-heading p {
+    font-size: 11px;
+  }
+  .knight-portrait {
+    height: 158%;
+    width: 40%;
+  }
+  .oracle-portrait {
+    width: 39%;
+  }
+  .entry-star {
+    left: 34%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-orbit span {
+    animation: none;
+  }
+  .entry-cta svg {
+    transition: none;
+  }
+}
+
+@media (max-width: 780px) {
+  .poster-caption > span {
+    display: none;
+  }
+  .portal-crafted .site-legal {
+    position: absolute;
+  }
+}
+
+/* One art plate controls the horizon, the foreground water, and its reflections. */
+.scene-panorama {
+  position: absolute;
+  left: -41.436464%;
+  top: -39.333333%;
+  width: 146.961326%;
+  height: 286.801718%;
+  pointer-events: none;
+}
+.scene-continuous {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 4%,
+    #000 98%,
+    transparent 100%
+  );
+}
+.head-halo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.head-halo-rings {
+  stroke: #c79b50;
+  stroke-width: 0.65;
+  opacity: 0.78;
+}
+.head-halo-text {
+  fill: #d1ae6e;
+  paint-order: stroke;
+  stroke: #0a0907;
+  stroke-width: 0.9px;
+  stroke-opacity: 0.85;
+  stroke-linejoin: round;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 8.7px;
+  letter-spacing: 1.2px;
+  opacity: 0.95;
+}
+@media (max-width: 780px) {
+  .poster-scene {
+    mix-blend-mode: normal;
+  }
+  .scene-subject {
+    bottom: -5%;
+  }
+  .poster-ground {
+    opacity: 1;
+  }
+}
+@media (max-width: 450px) {
+  .scene-subject {
+    bottom: -4%;
+  }
+}
+
+.poster-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 63%,
+    #06060538 80%,
+    #060605b8 100%
+  );
+}
+@media (max-width: 1180px) {
+  .portal-intro h1 {
+    width: clamp(530px, 52vw, 620px);
+  }
+  .poster-name {
+    margin-top: 12px;
+  }
+  .entry-heading {
+    --entry-title-height: 40px;
+  }
+}
+@media (min-width: 781px) and (max-height: 800px) {
+  .portal-intro h1 {
+    width: clamp(530px, 52vw, 950px);
+  }
+  .poster-name {
+    margin-top: 12px;
+  }
+  .entry-heading {
+    --entry-title-height: 43px;
+  }
+}
+@media (max-width: 780px) {
+  .portal-intro h1 {
+    width: min(80vw, 630px);
+  }
+  .poster-name {
+    margin-top: 20px;
+  }
+  .entry-heading {
+    --entry-title-height: 35px;
+  }
+}
+@media (max-width: 450px) {
+  .portal-intro h1 {
+    width: calc(100vw - 52px);
+  }
+  .poster-name {
+    margin-top: 20px;
+  }
+  .entry-heading {
+    --entry-title-height: 33px;
+  }
+}
+
+/* Layered poster: original-pixel silhouette, ornaments underneath, clean environment. */
+.poster-scene {
+  z-index: -3;
+}
+.scene-subject {
+  height: auto;
+  width: 84vw;
+  aspect-ratio: 1922/1080;
+  right: -2%;
+  bottom: 0;
+  top: auto;
+  transform: translateY(20%);
+}
+.scene-panorama {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  z-index: 0;
+  mask-image: linear-gradient(180deg, #000 0, #000 77%, transparent 100%);
+}
+.scene-angel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  z-index: 3;
+}
+.head-halo {
+  z-index: 1;
+}
+.head-halo-rings {
+  stroke: #be9759;
+  stroke-width: 0.8;
+  opacity: 0.83;
+}
+.head-halo-text {
+  font-size: 11.5px;
+  letter-spacing: 1.9px;
+  fill: #d9ba7c;
+  stroke-width: 1px;
+}
+.atlas-orbit {
+  z-index: -4;
+}
+.poster-patina {
+  opacity: 0.16;
+  z-index: 5;
+}
+.poster-frame {
+  inset: 0;
+  opacity: 0.95;
+  filter: none;
+  border-image-source: url("./assets/v3-layered/poster-frame-matte.webp");
+  border-image-slice: 160 210;
+  border-image-width: 100px 130px;
+}
+.poster-stones {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.poster-stones img {
+  position: absolute;
+  width: clamp(260px, 27vw, 540px);
+  height: auto;
+  bottom: -8px;
+  filter: brightness(0.62) saturate(0.53);
+}
+.stone-left {
+  left: -65px;
+}
+.stone-right {
+  right: -70px;
+}
+.entrance {
+  grid-template-columns: 33% minmax(0, 1fr) 58px;
+  column-gap: 26px;
+}
+.entry-heading {
+  padding-right: 15px;
+}
+.entry-cta:before {
+  left: -25px;
+}
+.poster-vignette {
+  background: linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 60%,
+    #06060522 78%,
+    #0606059c 100%
+  );
+}
+@media (min-width: 781px) and (max-height: 800px) {
+  .portal-intro h1 {
+    width: clamp(530px, 49vw, 950px);
+  }
+}
+@media (max-width: 1180px) {
+  .scene-subject {
+    width: 100vw;
+    right: -15%;
+    height: auto;
+  }
+  .entrance {
+    grid-template-columns: 29% minmax(0, 1fr) 48px;
+    column-gap: 18px;
+  }
+  .entry-heading {
+    padding-right: 12px;
+  }
+  .entry-cta:before {
+    left: -18px;
+  }
+  .poster-stones img {
+    width: 320px;
+  }
+}
+@media (max-width: 780px) {
+  .scene-subject {
+    width: 125%;
+    right: -10%;
+    height: auto;
+    bottom: 0;
+    transform: translateY(20%);
+  }
+  .poster-frame {
+    inset: 0;
+    border-image-width: 65px 70px;
+    opacity: 0.9;
+  }
+  .entrance {
+    grid-template-columns: 30% minmax(0, 1fr) 46px;
+    column-gap: 14px;
+  }
+  .entry-heading {
+    padding-right: 7px;
+  }
+  .entry-cta:before {
+    left: -14px;
+  }
+  .poster-stones img {
+    width: 250px;
+    bottom: 0;
+    filter: brightness(0.5) saturate(0.5);
+  }
+  .stone-left {
+    left: -102px;
+  }
+  .stone-right {
+    right: -102px;
+  }
+}
+@media (max-width: 450px) {
+  .scene-subject {
+    width: 150%;
+    right: -32%;
+    height: auto;
+    bottom: 0;
+  }
+  .entrance {
+    grid-template-columns: 27% minmax(0, 1fr) 44px;
+    column-gap: 12px;
+  }
+  .entry-heading {
+    padding-right: 7px;
+  }
+  .entry-cta:before {
+    left: -12px;
+  }
+  .entry-heading {
+    --entry-title-height: 31px;
+  }
+}
+
+/* Original silhouette and stone foreground share one scene plane. */
+.scene-background {
+  mask-image:
+    linear-gradient(90deg, transparent 0, #000 12%, #000 100%),
+    linear-gradient(180deg, #000 0, #000 77%, transparent 100%);
+  mask-composite: intersect;
+}
+.scene-subject {
+  --scene-origin: 18vw;
+}
+.poster-stones {
+  inset: auto;
+  left: calc(-1 * var(--scene-origin));
+  width: 100vw;
+  height: 500px;
+  bottom: 20%;
+  z-index: 2;
+  overflow: visible;
+}
+.poster-stones img {
+  width: clamp(220px, 22vw, 450px);
+  bottom: -5px;
+  filter: brightness(0.58) saturate(0.5);
+}
+.stone-left {
+  left: -65px;
+}
+.stone-right {
+  right: -70px;
+}
+@media (max-width: 1180px) {
+  .scene-subject {
+    --scene-origin: 15vw;
+  }
+}
+@media (max-width: 780px) {
+  .scene-subject {
+    --scene-origin: -15vw;
+  }
+  .poster-stones img {
+    width: 230px;
+    filter: brightness(0.5) saturate(0.5);
+  }
+  .stone-left {
+    left: -110px;
+  }
+  .stone-right {
+    right: -110px;
+  }
+}
+@media (max-width: 450px) {
+  .scene-subject {
+    --scene-origin: -18vw;
+  }
+}
+
+.poster-stones {
+  z-index: auto;
+}
+.poster-stones .stone-left {
+  z-index: 2;
+  bottom: -65px;
+}
+.poster-stones .stone-right {
+  z-index: 4;
+}
+.wing-crown {
+  display: none;
+}
+@media (max-width: 780px) {
+  .wing-crown {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: -38.4%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    clip-path: polygon(62% 0, 100% 0, 100% 35%, 62% 35%);
+    mask-image: linear-gradient(180deg, #000 0, #000 24%, transparent 35%);
+  }
+  .poster-stones .stone-left {
+    bottom: -25px;
+  }
+  .poster-stones .stone-right {
+    right: -130px;
+    bottom: -12px;
+  }
+}
+@media (max-width: 780px) {
+  .entry-heading {
+    padding-right: 14px;
+  }
+}
+.scene-panorama > .atlas-orbit {
+  z-index: 1;
+  width: 65%;
+  left: 8%;
+  top: 1%;
+}
+
+/* The illustration and worn ink share one edge-to-edge printed surface. */
+.portal-crafted {
+  padding: 0;
+  background: #090908;
+}
+.poster-print {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding: 0 var(--poster-gutter) 96px;
+  clip-path: inset(0);
+  overflow: hidden;
+}
+.poster-frame {
+  inset: 0;
+  opacity: 1;
+  filter: none;
+  border-image-source: url("./assets/v3-portal/edge-engraving.svg");
+  border-image-slice: 100;
+  border-image-width: 88px;
+  mix-blend-mode: screen;
+}
+.scene-subject {
+  right: -11.5%;
+  --scene-origin: 27.5vw;
+}
+.scene-background {
+  left: -33.149171%;
+  width: 133.149171%;
+  height: auto;
+  mask-image: linear-gradient(180deg, #000 0, #000 78%, transparent 100%);
+  mask-composite: add;
+}
+.poster-stones {
+  display: none;
+}
+@media (min-width: 781px) and (max-height: 800px) {
+  .poster-stage {
+    min-height: 0;
+  }
+  .poster-print {
+    padding-bottom: 90px;
+  }
+}
+@media (max-width: 1180px) {
+  .scene-subject {
+    right: -24.5%;
+    --scene-origin: 24.5vw;
+  }
+}
+@media (max-width: 780px) {
+  .portal-crafted {
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .poster-print {
+    height: calc(100svh - 86px);
+    min-height: 0;
+    padding: 0 26px 54px;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    clip-path: inset(0);
+    scroll-padding-top: 28px;
+    scroll-padding-bottom: 28px;
+  }
+  .poster-print::-webkit-scrollbar {
+    display: none;
+  }
+  .poster-frame {
+    border-image-width: 52px 38px;
+  }
+  .scene-subject {
+    right: -10%;
+    --scene-origin: -15vw;
+  }
+}
+@media (max-width: 450px) {
+  .scene-subject {
+    right: -32%;
+    --scene-origin: -18vw;
+  }
+}
+
+/* The complete architectural plate fills the width; its single shoreline follows the stage. */
+.poster-print {
+  --stage-height: calc(100svh - var(--card-height) - 114px);
+}
+.scene-background {
+  left: -27.5vw;
+  width: 100vw;
+  top: calc(80% - var(--stage-height));
+  height: calc((var(--stage-height) - 12px) * 1.60306644);
+  object-fit: fill;
+}
+@media (min-width: 781px) and (max-height: 800px) {
+  .poster-print {
+    --stage-height: calc(100svh - var(--card-height) - 108px);
+  }
+}
+@media (min-width: 781px) and (max-width: 1180px) {
+  .scene-background {
+    left: -24.5vw;
+  }
+  .portal-intro h1 {
+    width: min(49vw, 600px);
+  }
+}
+@media (max-width: 780px) {
+  .scene-background {
+    left: -50vw;
+    width: 160vw;
+    top: -12px;
+    height: auto;
+    object-fit: contain;
+  }
+}
+@media (max-width: 450px) {
+  .scene-background {
+    left: -59vw;
+    width: 192vw;
+  }
+}
+@media (min-width: 781px) and (max-height: 600px) {
+  .portal-crafted {
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .poster-print {
+    height: calc(100svh - 86px);
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-bottom: 54px;
+    --stage-height: 470px;
+  }
+  .poster-stage {
+    height: 470px;
+    min-height: 470px;
+  }
+}
+.poster-stage:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    #050504b8 0,
+    #05050499 19%,
+    #05050444 40%,
+    transparent 58%
+  );
+}
+@media (max-width: 780px) {
+  .portal-crafted {
+    --poster-gutter: 34px;
+  }
+  .poster-print {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+  .portal-intro {
+    max-width: calc(100% - 68px);
+  }
+  .portal-intro h1 {
+    width: min(80vw, 630px);
+  }
+}
+@media (max-width: 450px) {
+  .portal-intro h1 {
+    width: calc(100vw - 68px);
+  }
+}
+
+/* Portrait environmental plate keeps the left colonnade and its wet shoreline in view. */
+@media (max-width: 780px) {
+  .poster-print {
+    --mobile-stage: 620px;
+  }
+  .scene-background {
+    left: 15vw;
+    width: 100vw;
+    top: calc(80% - var(--mobile-stage));
+    height: calc((var(--mobile-stage) - 12px) * 1.402739726);
+    object-fit: fill;
+  }
+  .poster-stage:before {
+    background: linear-gradient(
+      90deg,
+      #05050488 0,
+      #05050477 25%,
+      #05050422 55%,
+      transparent 80%
+    );
+  }
+}
+@media (max-width: 450px) {
+  .poster-print {
+    --mobile-stage: 550px;
+  }
+  .scene-background {
+    left: 18vw;
+  }
+}
+@media (min-width:781px) and (max-width:950px) {.entrance {grid-template-columns:25% minmax(0,1fr) 48px;}.entry-heading {padding-right:16px;}.entry-heading p {font-size:13px;}}
+
+/* The portal has its own scene coordinates: left behind marble, right in front. */
+.portal-arc,.portal-reflection {position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;}
+.portal-arc-left {z-index:1;}
+.portal-arc-right {z-index:6;}
+.portal-reflection {z-index:1;}
+.portal-aura {stroke:#e9bc83;stroke-width:24;opacity:.75;}
+.portal-light {stroke:#f3d9b7;stroke-width:6;}
+.portal-core {stroke:#fff9ec;stroke-width:2;}
+.head-halo-text {font-size:17px;letter-spacing:2.4px;stroke-width:.8px;}
+
+/* Reference-two alpha cutout: its marble base meets y=860 in the shared scene. */
+.scene-angel {inset:auto;left:11.34235172%;top:.46296296%;width:86.99271592%;height:87.12962963%;mask-image:none;object-fit:contain;}
+.head-halo {transform:translate(4.68262227%,-7.87037037%);}
+
+/* Reference composition: an inset-left brand lockup and engraved entrance typography. */
+.portal-intro {top:clamp(56px,7.5vh,92px);bottom:0;max-width:none;}
+.poster-name {justify-content:center;width:68%;gap:22px;margin:12px 0 0;}
+.poster-name>span {font-size:clamp(36px,3.3vw,64px);letter-spacing:.3em;padding-left:.3em;}
+.poster-name i {position:relative;display:block;flex-shrink:0;width:68px;height:12px;background:none;}
+.poster-name i::before {content:"";position:absolute;left:0;right:0;top:50%;height:4px;transform:translateY(-50%);clip-path:polygon(0 50%,80% 0,100% 50%,80% 100%);background:linear-gradient(90deg,transparent,#b69a6655 28%,#e3c994 82%,#b69a66);}
+.poster-name i:last-child::before {transform:translateY(-50%) scaleX(-1);}
+.poster-name i .poster-star {position:absolute;width:12px;height:12px;left:80%;top:50%;transform:translate(-50%,-50%);color:#e2c895;}
+.poster-name i:last-child .poster-star {left:20%;}
+.poster-motto {width:68%;margin:12px 0 0;text-align:center;font:italic clamp(14px,1.15vw,21px)/1.6 NextRoundAntiqua,Georgia,serif;letter-spacing:.17em;color:#d7c3a0;}
+.poster-rule {width:45%;margin:26px 0 0 11.5%;gap:18px;}
+.poster-rule .poster-star {width:17px;height:17px;}
+.poster-caption {position:absolute;isolation:isolate;bottom:40px;left:0;width:max-content;max-width:100%;}
+.poster-caption::before {content:"";position:absolute;inset:-17px -28px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,.82) 0%,rgba(0,0,0,.68) 40%,rgba(0,0,0,.28) 68%,transparent 100%);filter:blur(7px);}
+.poster-caption p {font-size:12px;letter-spacing:.16em;text-shadow:0 1px 3px #000;}
+.poster-stage:before {display:none;}
+.entry-heading {text-align:center;justify-items:center;grid-template-rows:var(--entry-title-height,clamp(40px,3.6vw,67px)) 17px 30px 19px;}
+.entry-heading h2 {justify-content:center;}
+.entry-divider {display:flex;align-items:center;align-self:center;position:relative;width:100%;height:1px;color:#bfa06c;}
+.entry-divider>span {display:block;width:100%;height:1px;background:#bfa06c88;}
+.entry-divider .poster-star {position:absolute;right:-4px;width:12px;height:12px;}
+.entry-heading small.entry-translation,.entry-translation {font:400 clamp(8px,.69vw,12px)/1.7 Georgia,serif;letter-spacing:.22em;color:#c1a67a;}
+.construction {display:grid;justify-items:center;gap:1px;}
+.construction-status {font:400 10px/1.3 var(--sans);letter-spacing:.02em;}
+.ritual-entry .entry-heading {grid-template-rows:var(--entry-title-height,clamp(40px,3.6vw,67px)) 17px 30px 30px;}
+.head-halo-text {dominant-baseline:central;}
+@media(max-width:1180px) and (min-width:781px) {
+ .poster-name {gap:16px;}.poster-name>span {font-size:34px;}.poster-name i {width:45px;}
+ .poster-motto {font-size:13px;letter-spacing:.1em;}.poster-rule {margin-top:20px;}
+ .entry-heading {grid-template-rows:var(--entry-title-height) 14px 26px 17px;}
+ .ritual-entry .entry-heading {grid-template-rows:var(--entry-title-height) 14px 26px 25px;}
+ .entry-heading p {font-size:13px;}.construction-status {font-size:9px;}
+}
+@media(max-width:780px) {
+ .portal-intro {top:68px;bottom:auto;}
+ .portal-intro h1 {width:calc(100vw - 68px);}
+ .poster-name {width:max(68%,244px);max-width:100%;margin-top:10px;gap:14px;}
+ .poster-name>span {font-size:29px;letter-spacing:.28em;}
+ .poster-name i {width:40px;}.poster-name i .poster-star {width:10px;height:10px;}
+ .poster-motto {width:max(68%,244px);max-width:100%;margin-top:10px;font-size:14px;letter-spacing:.1em;}
+ .poster-rule {margin-top:16px;width:56%;margin-left:calc((max(68%,244px) - 56%) / 2);gap:16px;}
+ .poster-rule .poster-star {width:13px;height:13px;}
+ .poster-caption {position:relative;bottom:auto;left:auto;margin-top:16px;text-align:left;}
+ .poster-caption p {font-size:10px;letter-spacing:.12em;}
+ .scene-subject {right:-16%;}
+ .scene-background {left:9vw;mask-image:linear-gradient(180deg,transparent 0,transparent 26%,#000 32%,#000 78%,transparent 100%);}
+ .scene-angel {mask-image:linear-gradient(180deg,transparent 0,#000 17%,#000 100%);}
+ .poster-print {height:100svh;padding-bottom:78px;mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 75px),transparent calc(100% - 24px));}
+ .entry-heading,.ritual-entry .entry-heading {grid-template-rows:var(--entry-title-height) 12px 25px 17px;}
+ .entry-heading p {font-size:clamp(12px,2.65vw,16px);}
+ .entry-heading small.entry-translation,.entry-translation {font-size:8px;letter-spacing:.12em;}
+ .construction .entry-translation {display:none;}
+ .construction-status {font-size:10px;}
+}
+@media(max-width:450px) {
+ .scene-subject {right:-38%;}.scene-background {left:12vw;}
+ .poster-name>span {font-size:27px;}.poster-motto {font-size:13px;}
+ .entry-heading p {font-size:12px;letter-spacing:0;}
+ .entry-heading small.entry-translation {font-size:8px;letter-spacing:.08em;}
+}
+@media(min-width:781px) and (max-height:600px) {
+ .poster-print {height:100svh;padding-bottom:78px;mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 75px),transparent calc(100% - 24px));}
+}
+
+/* Both entrance titles and descriptions share the same four-row baseline grid. */
+@media(min-width:1181px) {.entry-heading,.ritual-entry .entry-heading {grid-template-rows:var(--entry-title-height,clamp(40px,3.6vw,67px)) 17px 30px 30px;}}
+@media(min-width:781px) and (max-width:1180px) {.entry-heading,.ritual-entry .entry-heading {grid-template-rows:var(--entry-title-height) 14px 26px 25px;}}
+.entry-heading>small {align-self:start;}
+
+
+
+/* Portrait: gently recenter the angel and portal without disturbing the shared horizon.
+   Move the angel, both portal halves, halo and reflection together; compensate the environment
+   for that parent move so its wizard ends up 5vw left of the previous position. */
+@media (max-width:780px) and (orientation:portrait) {
+  .portal-crafted { --portrait-subject-shift:4vw; --portrait-environment-shift:-5vw; }
+  .scene-subject { right:calc(-16% - var(--portrait-subject-shift)); }
+  .scene-background { left:calc(9vw + var(--portrait-environment-shift) - var(--portrait-subject-shift)); }
+}
+@media (max-width:450px) and (orientation:portrait) {
+  .scene-subject { right:calc(-38% - var(--portrait-subject-shift)); }
+  .scene-background { left:calc(12vw + var(--portrait-environment-shift) - var(--portrait-subject-shift)); }
+}

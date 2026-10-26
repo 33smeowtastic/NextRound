@@ -1,0 +1,87 @@
+/* Shared operating controls. The poster artwork and original legal footer remain independent. */
+:root {
+  --ui-target-min:24px;
+  --ui-target-touch:44px;
+  --ui-space-2:8px;
+  --ui-space-3:12px;
+  --ui-space-4:16px;
+}
+body:has(.shell) {
+  --ui-focus:#bff55c;
+  --ui-error:#f4aaa7;
+  --ui-control-border:#77846b;
+  --ui-body-size:14px;
+  --ui-label-size:13px;
+  --ui-safe-bottom:96px;
+}
+body.theme-light:has(.shell) {
+  --ui-focus:#755729;
+  --ui-error:#9d3039;
+  --ui-control-border:#8a7658;
+}
+/* The light world retains a dark training stage; its local focus ink follows that surface. */
+body.theme-light:has(.shell) .training-stage {--ui-focus:#d6bd92;}
+html:has(.shell) {scroll-padding-block:96px;}
+body:has(.shell) :is(.shell,.sheet) :is(button,a,input,select,textarea,summary,[tabindex]) {
+  scroll-margin-block:96px;
+}
+body:has(.shell) :is(.shell,.sheet) :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible {
+  outline:2px solid var(--ui-focus);
+  outline-offset:3px;
+}
+body:has(.shell) :is(.shell,.sheet) :is(input,select,textarea):focus {
+  border-color:var(--ui-focus);
+  outline-color:var(--ui-focus);
+}
+body:has(.shell) .shell .main {padding-bottom:max(var(--ui-safe-bottom),env(safe-area-inset-bottom));}
+body:has(.shell) :is(.shell,.sheet) :is(.row-title,.opportunity-organization,.workspace-brand) {
+  display:inline-flex;
+  align-items:center;
+  min-height:var(--ui-target-min);
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  text-align:start;
+}
+body:has(.shell) :is(.shell,.sheet) :is(.icon-btn,.text-btn) {min-height:var(--ui-target-min);}
+body:has(.shell) .shell .row-select {display:inline-flex;align-items:center;justify-content:center;min-width:24px;min-height:24px;}
+body:has(.shell) :is(.shell,.sheet) :is(input,select,textarea) {max-width:100%;min-width:0;}
+body:has(.shell) :is(.shell,.sheet) :is(input,select,textarea):not(:disabled) {border-color:var(--ui-control-border);}
+body:has(.shell) :is(.shell,.sheet) :is(input,select,textarea)[aria-invalid="true"] {border-color:var(--ui-error);}
+body:has(.shell) [data-form-error] {color:var(--ui-error);font-size:var(--ui-label-size);line-height:1.7;overflow-wrap:anywhere;}
+body:has(.shell) [data-form-error]:empty {display:none;}
+body:has(.shell) :is(.sheet-content,.panel,.settings-panel-content) pre {max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;}
+body:has(.shell) :is(.shell,.sheet) :is(.details-copy,.content-card-preview,.row .grow,.conflict,.unified-row) {overflow-wrap:anywhere;min-width:0;}
+body:has(.shell) .sheet {max-height:100dvh;scroll-padding-block:100px 112px;}
+body:has(.shell) .sheet .sheet-header {gap:var(--ui-space-4);}
+body:has(.shell) .sheet .sheet-header>div {min-width:0;}
+body:has(.shell) .sheet .sheet-header h2 {overflow-wrap:anywhere;}
+body:has(.shell) .sheet .sheet-footer {flex-wrap:wrap;gap:var(--ui-space-3);padding-bottom:max(15px,env(safe-area-inset-bottom));}
+body:has(.shell) .sheet .sheet-footer .auto-status {flex:1 1 150px;}
+body:has(.shell) .training-config-block {position:relative;min-width:0;}
+body:has(.shell) .training-config-help {position:absolute;inset-block-start:var(--ui-space-2);inset-inline-start:calc(20px + 5em);display:inline-flex;align-items:center;}
+body:has(.shell) .training-config-help>.inline-help {margin:0;}
+body:has(.shell) .training-draft h2 {font:500 15px/1.5 var(--display);letter-spacing:0;margin:0 0 var(--ui-space-2);color:#f4f4ef;}
+body:has(.shell) .opportunity-card-heading .opportunity-card-title {font-size:18px;line-height:1.5;letter-spacing:-.01em;margin:0;}
+@media(max-width:780px) {
+  /* The collapsed brand hit area follows the visible rail instead of extending under the header. */
+  body:has(.shell) .shell:not(.nav-open) .sidebar .shell-brand {width:var(--shell-sidebar-width);min-width:var(--ui-target-touch);max-width:100%;}
+  body:has(.shell) :is(.shell,.sheet) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),select,textarea) {
+    font-size:16px;
+    line-height:1.5;
+    min-height:var(--ui-target-touch);
+  }
+  body:has(.shell) .sheet :is(.form-stack label,.form-grid label,.form-help) {font-size:var(--ui-label-size);line-height:1.7;}
+  body:has(.shell) .training-config-help {inset-block-start:5px;inset-inline-start:calc(16px + 5em);}
+  body:has(.shell) .sheet .sheet-content {padding-inline:var(--ui-space-4);}
+  body:has(.shell) .sheet .sheet-footer {padding-inline:var(--ui-space-4);}
+  body:has(.shell) .sheet .sheet-footer>.btn {min-height:var(--ui-target-touch);}
+}
+@media(prefers-reduced-motion:reduce) {
+  body:has(.shell) :is(.shell,.sheet) {scroll-behavior:auto;}
+  body:has(.shell) :is(.shell,.sheet) :is(input,select,textarea,button,summary) {transition-duration:0s;}
+}
+@media(forced-colors:active) {
+  body:has(.shell) :is(.shell,.sheet) :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible {outline-color:Highlight;}
+  body:has(.shell) :is(.shell,.sheet) [aria-invalid="true"] {border-color:Mark;}
+}

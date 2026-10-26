@@ -1,0 +1,171 @@
+/* ArcanaArbor's quiet loading composition, adapted to the round threshold mark. */
+html[data-starting] {
+  background: var(--startup-bg);
+  overflow: hidden;
+}
+#startup-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  align-content: safe center;
+  justify-items: center;
+  padding: 32px 24px;
+  overflow-y: auto;
+  background: var(--startup-bg);
+  color: var(--startup-fg);
+  text-align: center;
+  opacity: 1;
+  transition: opacity 500ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+#startup-loading.is-departing {
+  opacity: 0;
+}
+#startup-loading [hidden] {
+  display: none;
+}
+#startup-loading .startup-mark {
+  display: block;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 22px;
+  overflow: visible;
+  animation: threshold-breathe 2.5s ease-in-out infinite;
+}
+#startup-loading .startup-title {
+  margin: 0;
+  color: var(--startup-fg);
+  font:
+    400 21px/1.8 NextRoundSerifSC,
+    "Songti SC",
+    "SimSun",
+    serif;
+  letter-spacing: 0.08em;
+  padding-left: 0.08em;
+}
+#startup-loading .startup-progress-wrap {
+  width: min(240px, 100%);
+  margin-top: 30px;
+}
+#startup-loading .startup-progress {
+  height: 2px;
+  overflow: hidden;
+  background: var(--startup-track);
+}
+#startup-loading .startup-progress > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--startup-progress);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms linear;
+}
+#startup-loading .startup-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 12px;
+}
+#startup-loading .startup-message,
+#startup-loading .startup-percent {
+  margin: 0;
+  color: var(--startup-muted);
+  font:
+    400 12px/1.8 "Segoe UI",
+    "Microsoft YaHei",
+    sans-serif;
+  text-align: left;
+}
+#startup-loading .startup-percent {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+#startup-loading .startup-note {
+  max-width: 320px;
+  margin: 24px 0 0;
+  color: var(--startup-muted);
+  font:
+    400 12px/1.9 "Segoe UI",
+    "Microsoft YaHei",
+    sans-serif;
+}
+#startup-loading .startup-detail {
+  max-width: min(420px, 100%);
+  margin: 12px 0 0;
+  color: var(--startup-muted);
+  font:
+    12px/1.8 "Segoe UI",
+    "Microsoft YaHei",
+    sans-serif;
+  overflow-wrap: anywhere;
+}
+#startup-loading .startup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+#startup-loading
+  .startup-actions:has(> [hidden]:first-child):has(> [hidden]:last-child) {
+  display: none;
+}
+#startup-loading button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--startup-border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--startup-fg);
+  font:
+    13px/1.8 "Segoe UI",
+    "Microsoft YaHei",
+    sans-serif;
+}
+#startup-loading button:hover {
+  border-color: var(--startup-accent);
+}
+#startup-loading button:focus-visible {
+  outline: 2px solid var(--startup-accent);
+  outline-offset: 4px;
+}
+#startup-loading.has-error .startup-mark {
+  animation: none;
+}
+@keyframes threshold-breathe {
+  50% {
+    opacity: 0.45;
+    transform: translateY(-4px);
+  }
+}
+html[data-motion="off"] #startup-loading,
+html[data-motion="off"] #startup-loading * {
+  animation: none;
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #startup-loading,
+  #startup-loading * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-height: 420px) {
+  #startup-loading {
+    padding-block: 24px;
+  }
+  #startup-loading .startup-mark {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+  #startup-loading .startup-progress-wrap {
+    margin-top: 20px;
+  }
+  #startup-loading .startup-note {
+    margin-top: 16px;
+  }
+}

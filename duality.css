@@ -1,0 +1,139 @@
+/* Shared coordinates keep the world and the two statue states registered to one shoreline. */
+.scene-environment {position:absolute;inset:0;z-index:0;pointer-events:none;}
+.scene-environment .scene-background {
+  left:-10vw;top:0;width:120vw;height:calc((var(--stage-height) - 12px) * 1.60306644);
+  object-fit:fill;
+  mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 77%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  mask-composite:intersect;
+  transition:filter 1.2s ease;
+}
+.scene-subject {
+  width:min(76vw,calc((var(--stage-height) - 72px) * 2.224537037));right:6vw;
+  height:auto;aspect-ratio:1922/1080;transform:translateY(20%);
+}
+.scene-statue {
+  position:absolute;inset:auto;left:11.34235172%;top:.46296296%;
+  width:86.99271592%;height:87.12962963%;max-width:none;
+  object-fit:contain;z-index:3;mask-image:none;transition:opacity 1.2s ease;
+}
+.scene-demon {top:-3.7037037%;opacity:0;}
+body.theme-dark .scene-angel {opacity:0;}
+body.theme-dark .scene-demon {opacity:1;}
+.portal-arc :is(.portal-aura,.portal-light,.portal-core),.head-halo-rings,.head-halo-text {transition:stroke 1.2s ease,fill 1.2s ease;}
+.portal-crafted .site-controls .theme-toggle {background:transparent;border:0;box-shadow:none;border-radius:50%;}
+.portal-crafted .site-controls .theme-toggle svg {width:19px;height:19px;}
+.poster-caption i {font-style:normal;}
+
+/* Hell is an oxidised black-metal engraving; the heaven state keeps the ivory/gold print. */
+body.theme-dark .portal-crafted {--poster-ivory:#e0e7d5;background:#050906;}
+body.theme-dark .portal-crafted .poster-ground {background:#050906;}
+body.theme-dark .portal-crafted .scene-background {filter:sepia(.55) hue-rotate(56deg) saturate(.7) brightness(.76);}
+body.theme-dark .portal-crafted :is(.wordmark-art,.card-title-art img) {filter:sepia(.25) hue-rotate(43deg) saturate(.42);}
+body.theme-dark .portal-crafted .poster-frame {filter:sepia(.55) hue-rotate(51deg) saturate(.65);}
+body.theme-dark .portal-crafted .poster-patina {filter:sepia(.5) hue-rotate(45deg) saturate(.5);}
+body.theme-dark .portal-crafted .portal-aura {stroke:#9ac974;}
+body.theme-dark .portal-crafted .portal-light {stroke:#d9edc8;}
+body.theme-dark .portal-crafted .portal-core {stroke:#f5fff0;}
+body.theme-dark .portal-crafted .head-halo-rings {stroke:#91af73;}
+body.theme-dark .portal-crafted .head-halo-text {fill:#becd9f;stroke:#060b07;}
+body.theme-dark .portal-crafted :is(.poster-motto,.entry-translation,.entry-heading small.entry-translation,.poster-demo) {color:#b9c79f;}
+body.theme-dark .portal-crafted :is(.poster-rule,.poster-star,.entry-frame,.entry-divider,.entry-cta) {color:#a6b98b;}
+body.theme-dark .portal-crafted .entry-divider>span {background:#a6b98b88;}
+body.theme-dark .portal-crafted .poster-name i::before {background:linear-gradient(90deg,transparent,#93a97b55 28%,#cfddb5 82%,#93a97b);}
+body.theme-dark .portal-crafted .entry-portrait {filter:grayscale(1) sepia(.2) hue-rotate(40deg);}
+body.theme-dark .portal-crafted .entrance {background-color:#090e0be8;}
+
+@media (max-width:1180px) and (min-width:781px) {
+  .scene-subject {right:0;width:min(80vw,calc((var(--stage-height) - 72px) * 2.224537037));}
+}
+@media (max-width:780px) {
+  .scene-subject {width:120%;right:-7%;}
+  .scene-environment .scene-background {
+    left:-16vw;top:0;width:120vw;height:calc((var(--mobile-stage) - 12px) * 1.402739726);
+    mask-image:linear-gradient(180deg,transparent 0,transparent 25%,#000 34%,#000 78%,transparent 100%),linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+  }
+  .portal-intro :is(.poster-name,.poster-motto,.poster-rule) {transform:translateX(-14px);}
+  .portal-intro .poster-caption {
+    left:-14px;margin-left:0;width:min(100%,max(68%,244px));max-width:none;
+  }
+  .portal-intro .poster-caption p {display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:6px;align-items:center;}
+  .portal-intro .poster-caption p>span:first-child {text-align:right;}
+  .portal-intro .poster-caption p>span:last-child {text-align:left;}
+  .portal-intro .poster-caption p>i {text-align:center;}
+}
+@media (max-width:450px) {
+  .scene-subject {width:140%;right:-22%;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .scene-statue,.scene-environment .scene-background,.portal-arc :is(.portal-aura,.portal-light,.portal-core),.head-halo-rings,.head-halo-text {transition:none;}
+}
+html[data-motion="off"] .scene-statue,html[data-motion="off"] .scene-environment .scene-background {transition:none;}
+
+/* Mouse/gravity offsets compose with, rather than replace, each layer's layout transform. */
+.portal-crafted :is(.scene-environment,.scene-subject,.portal-intro,.entrance) {translate:var(--portal-drift-x,0px) var(--portal-drift-y,0px);}
+
+/* Each world owns every decorative ink, reflection and interactive accent. */
+body.theme-light .portal-crafted {--portal-ink:#e9e5db;--portal-muted:#d2c8b7;--portal-line:#baa17b;}
+body.theme-dark .portal-crafted {--portal-ink:#e5edde;--portal-muted:#b9cbb0;--portal-line:#8fa780;}
+body.theme-dark .portal-crafted :is(.poster-caption p,.entry-heading p,.construction-status,.poster-side-note,.entry-cta,.entry-cta.disabled,.poster-name,.poster-motto,.poster-demo,.entry-translation) {color:var(--portal-muted);}
+body.theme-dark .portal-crafted .poster-rule>span {background:#8fa78088;}
+body.theme-dark .portal-crafted .entry-cta {border-color:#8fa780;}
+body.theme-dark .portal-crafted .entry-cta::before {background:#8fa78066;}
+body.theme-dark .portal-crafted .entry-cta:hover {background:#90ae7c15;border-color:#c5d9b7;color:#e5edde;}
+body.theme-dark .portal-crafted .entry-orbit {border-color:#8fa7805c;}
+body.theme-dark .portal-crafted .entry-orbit::before,
+body.theme-dark .portal-crafted .entry-orbit::after {border-color:#8fa7803b;}
+body.theme-dark .portal-crafted .atlas-orbit {border-color:#8fa78027;}
+body.theme-dark .portal-crafted .atlas-orbit i {border-color:#8fa78027;}
+body.theme-dark .portal-crafted .entry-ornament {filter:grayscale(1) sepia(.3) hue-rotate(55deg) saturate(.7);}
+body.theme-dark .portal-crafted :is(.wordmark-art,.card-title-art img,.entry-portrait) {filter:grayscale(1);}
+body.theme-dark .portal-crafted .scene-background {filter:grayscale(1) sepia(.4) hue-rotate(55deg) saturate(.8) brightness(.8);}
+body.theme-dark .portal-crafted .poster-frame {filter:grayscale(1) sepia(.4) hue-rotate(55deg) saturate(.7);}
+body.theme-dark .portal-crafted .portal-reflection stop:first-child {stop-color:#e2f1d4;}
+body.theme-dark .portal-crafted .portal-reflection stop:last-child {stop-color:#769967;}
+body.theme-dark .portal-crafted .site-controls :is(.icon-button,.sound-toggle):hover {background:#d7e8ca14;}
+body.theme-light .portal-crafted .site-controls :is(.icon-button,.sound-toggle):hover {background:#f0e2ca14;}
+body.theme-dark .portal-crafted .poster-name i .poster-star {color:#c5d9b7;}
+
+body.theme-light:has(.shell) {
+  --paper:#f2eee5;--surface:#fbf9f3;--surface-raised:#f8f4eb;--surface-inset:#e9e2d6;
+  --ink:#39352f;--muted:#6a6258;--line:#d3cbbb;--wash:#ece4d7;
+  --primary:#d1b98d;--gold-ink:#755a32;--field-line:#ae9e87;--signal:#9b7840;
+}
+body.theme-light:has(.shell) .shell .nav a.active,
+body.theme-light:has(.shell) .shell .nav a.active:hover {background-color:#ece2d1;color:#68512f;}
+body.theme-light:has(.shell) .shell :is(.badge,.badge.neutral,.badge.green,.card-tag) {background-color:#eee4d4;color:#755a32;border-color:#cfc0a9;}
+body.theme-light:has(.shell) .shell .badge.blue {background-color:#e7edf1;color:#49647b;}
+body.theme-light:has(.shell) .shell :is(.agenda-week button.is-selected,.agenda-week button.active,.agenda-week button[aria-pressed="true"]) {background-color:#e9ddc5;color:#68512f;}
+body.theme-light:has(.shell) .shell :is(.note,.workspace-notice,.help-popover,.composition-undo,.agenda-links) {background-color:#eee7da;}
+body.theme-light:has(.shell) :is(input[type="checkbox"],input[type="radio"]) {accent-color:var(--signal);}
+body.theme-light:has(.shell) .shell :is(.help-trigger,.opportunity-slider-heading) {color:var(--gold-ink);}
+body.theme-light:has(.shell) .sheet .agenda-links {background-color:#e9e2d6;}
+
+body.theme-dark:has(.shell) {--primary:#bff55c;--gold-ink:#bff55c;--archive-button-gold:#bff55c;--signal:#bff55c;}
+body.theme-dark:has(.shell) :is(button,a,input,select,textarea,summary):focus-visible {outline-color:#bff55c;}
+body.theme-dark:has(.shell) .shell :is(.training-context,.agenda-item time,.agenda-time,.agenda-overview strong,.agenda-date strong) {color:var(--signal);}
+body.theme-dark:has(.shell) :is(.btn,.training-stage .btn,.rehearse-banner .btn):not(.secondary):not(.danger):hover {background-color:#d3ff86;border-color:#bff55c;}
+body.theme-dark:has(.shell) .shell .nav a.active {color:var(--signal);}
+body.theme-dark:has(.shell) :is(.note,.note.warning,.workspace-notice,.recovery-notice) {color:#d9e1d0;border-color:#5d6f50;}
+/* Residual hard-coded archive inks found by the computed-colour audit. */
+body.theme-dark .portal-crafted .poster-name>span {color:var(--portal-ink);}
+body.theme-dark:has(.shell) .help-trigger {color:#b8c6ae;}
+body.theme-dark:has(.shell) .shell .search-button kbd {border-color:#56614f;}
+body.theme-dark:has(.shell) .shell .agenda-empty {color:#bac8af;}
+body.theme-dark:has(.shell) .shell .training-stage .tabs {border-color:#53614b;}
+body.theme-dark:has(.shell) .shell .training-stage .tabs button:not(.active) {color:#b9c7ae;}
+body.theme-dark:has(.shell) .shell :is(.bar-fill,.timeline-bar,.storage-fill) {background-color:#9db88a;}
+
+/* Register the visible eye in both source figures, keeping the common shoreline and halo. */
+.portal-crafted .scene-angel {left:18.16384609%;top:5.84959427%;width:80.78887348%;height:80.96444697%;}
+.portal-crafted .scene-demon {left:32.63883496%;top:-25.31324857%;width:101.91187662%;height:111.87212088%;}
+.portal-crafted .scene-demon {filter:none;}
+.portal-crafted .head-halo,body.theme-dark .portal-crafted .head-halo {transform:translate(3.22580645%,-3.88888889%);}
+.portal-crafted :is(.portal-arc,.portal-reflection) {translate:3.12174818% 0;}
+.portal-crafted .scene-wizard {left:17.44571578%;top:51.22639195%;width:17.60031976%;height:30.19376993%;}
+.scene-wizard {position:absolute;max-width:none;object-fit:contain;z-index:3;pointer-events:none;}
+body.theme-dark .scene-wizard {filter:grayscale(1) sepia(.25) hue-rotate(55deg) saturate(.7);}
+.scene-contact-shadow {position:absolute;left:57%;top:78.7%;width:49%;height:4.5%;z-index:2;pointer-events:none;background:radial-gradient(ellipse,#040504e0 0,#040504a8 40%,transparent 74%);mix-blend-mode:multiply;}
+.wizard-contact-shadow {position:absolute;left:24.6%;top:79.1%;width:7%;height:1.8%;z-index:2;pointer-events:none;background:radial-gradient(ellipse,#000b 0,transparent 74%);}
+body.theme-dark:has(.shell) .shell .badge.yellow {background-color:#242c20;color:#c5d6b5;border-color:#596d4c;}

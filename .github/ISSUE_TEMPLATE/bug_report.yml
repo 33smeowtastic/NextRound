@@ -1,0 +1,72 @@
+name: Bug report / 问题报告
+description: Report a reproducible problem without sharing personal data / 提交可复现且不含私人资料的问题
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use fictional or minimal synthetic data. Do not upload résumés, contact details, interview transcripts, full backups, recordings, or unredacted screenshots/logs.
+        请使用虚构示例或最小合成资料，不要公开上传简历、联系方式、面试原文、完整备份、录音或未脱敏截图／日志。
+        For an unpatched security issue, describe the impact without publishing exploit payloads or private records while a safe communication route is agreed with maintainers.
+        如涉及未修复安全问题，请先说明影响，勿公开利用载荷或私人记录，并与维护者确认安全沟通方式。
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check / 隐私检查
+      options:
+        - label: I removed personal data and secrets from all content / 我已移除所有内容中的个人资料和凭证
+          required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: Application version / 应用版本
+      description: From the package or release used; do not use the offline cache name / 填写使用的应用或发布包版本，不用离线缓存名代替
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment / 运行环境
+      description: OS, browser/version, device and whether installed as an app / 系统、浏览器及版本、设备、是否安装为应用
+    validations:
+      required: true
+  - type: dropdown
+    id: delivery
+    attributes:
+      label: Delivery used / 使用方式
+      options:
+        - Source with local server / 源码本地服务
+        - Static runtime package / 静态运行包
+        - Other or unknown / 其他或不确定
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps / 复现步骤
+      description: Include the space, route, action and a fictional sample if needed / 说明正式或演示空间、页面、操作；必要时提供虚构样例
+      placeholder: |
+        1. Start with a new demo context / 从新演示环境开始
+        2. Import a fictional file / 导入虚构文件
+        3. Describe the action / 描述触发操作
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result / 预期结果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result / 实际结果
+      description: Include the visible error message and whether existing data remained intact / 写明界面错误及既有数据是否保持完整
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence / 已脱敏证据
+      description: Optional minimal logs or screenshots. Never attach your full backup / 可选最小日志或截图，不要附完整备份
