@@ -29,8 +29,8 @@ This file records version changes. The application version comes from `package.j
 
 - MIT 代码许可、独立素材条款、第三方字体说明和固定开发依赖。 / MIT code, independent asset terms, third-party font notices and locked development dependencies.
 - 独立站点／源码白名单构建、隐私特征防回归、可复跑浏览器入口。 / Separate allowlisted runtime/source builds, private-data signature regression checks and a reproducible browser-test entry point.
-- 完整中英 README、虚构示例、问题模板和发布草稿。 / Complete bilingual README, fictional examples, issue forms and draft release materials.
-- 计划生产域名为 `nextround.apps.brothforge.com`；部署及线上可用性尚待验证，公开源码位于 [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)。 / The planned production domain is `nextround.apps.brothforge.com`; deployment and online availability remain unverified, and the public repository is [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound).
+- 完整中英 README、虚构示例、问题模板和发布材料。 / Complete bilingual README, fictional examples, issue forms and release materials.
+- 正式站点为 `nextround.apps.brothforge.com`；HTTPS、93个运行资源及关键链路已验证，公开源码位于 [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)。 / The production domain is `nextround.apps.brothforge.com`; HTTPS, 93 runtime resources and core flows have been verified, and the public repository is [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound).
 
 ### 兼容与已知限制 / Compatibility and limitations
 

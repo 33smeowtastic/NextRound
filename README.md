@@ -12,7 +12,7 @@
 
 NextRound 帮助企业求职者及公务员、事业单位报考者把散落的岗位准备材料转化为可关联、可追溯、可反复练习的本地资料。AI 在用户选择的外部服务中完成首轮训练与整理，应用本身不调用模型，也不自动上传简历。是否向外部 AI 提供 JD、简历或回答由您决定；请先匿名化，并了解所选服务的数据政策。本地保存不能保证主动交给外部 AI 的内容仍在本机。
 
-首个正式发布版本定为 **1.0.0**，正在准备上线与公开源码交付。下面说明的功能以现有实现为准；未实现内置 AI／Agent／RAG、账号、云同步／远程数据库、订阅支付或独立熟练度算法／间隔复习（SRS）。现有训练历史、时长、自评和难度筛选不等于自动熟练度管理。界面目前以简体中文为主，本文件提供完整中英双语说明。
+首个正式发布版本为 **1.0.0**，源码已公开，正式站点已上线。下面说明的功能以现有实现为准；未实现内置 AI／Agent／RAG、账号、云同步／远程数据库、订阅支付或独立熟练度算法／间隔复习（SRS）。现有训练历史、时长、自评和难度筛选不等于自动熟练度管理。界面目前以简体中文为主，本文件提供完整中英双语说明。
 
 ```mermaid
 flowchart LR
@@ -164,8 +164,8 @@ npm run build:source
 - 当前证据来自内部自动化和有限人工检查，尚无可引用的大样本用户效果、留存或面试成功率结论。自动无障碍扫描零违规不等于完整 WCAG 认证。
 - 没有内置 AI；外部模型可用性、费用、输出质量和数据政策由对应服务决定。导入校验不证明生成事实或训练评分正确。
 - 没有账号、云同步、跨设备自动迁移或独立 SRS。请自行保管完整备份，不把浏览器存储当唯一备份。
-- 真实手机传感器、真实麦克风／真人听感、系统安装确认、生产 HTTPS／响应头及存储配额耗尽仍需目标环境验证。
-- 计划生产地址为 [https://nextround.apps.brothforge.com/](https://nextround.apps.brothforge.com/)，尚未部署及验证，不能当作已上线 Demo。公开源码仓库为 [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)。
+- 真实手机传感器、真实麦克风／真人听感、系统安装确认、存储配额耗尽仍需目标环境验证；生产 HTTPS 和基础响应头已检查。
+- 正式站点为 [https://nextround.apps.brothforge.com/](https://nextround.apps.brothforge.com/)，DNS、HTTPS、资源完整性及关键浏览器链路已验证，详见[首发记录](docs/releases/v1.0.0.md)。公开源码仓库为 [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)。
 
 | 标识 | 含义 |
 | --- | --- |
@@ -195,7 +195,7 @@ NextRound is a frontend-only, local-first workspace for enterprise job seekers a
 
 Initial AI training and content organization take place in an external service chosen by the user. NextRound validates and previews structured imports, supports practice and keeps local records; it does not call a model or automatically upload résumés. You decide whether to provide a résumé, job description or answer to an external AI. Anonymize materials and check that provider's data policy; local storage does not keep material local after you deliberately send it elsewhere.
 
-The first public release is designated **1.0.0**, with launch and public-source materials being prepared. No tag, public Release or live Demo is implied. The interface is primarily Simplified Chinese, while this README contains complete Chinese and English instructions. Built-in AI/agents/RAG, accounts, cloud services, subscriptions/payments and an independent mastery/spaced-repetition system (SRS) are not implemented. Current difficulty filters, practice history, duration and self-assessment are not automatic mastery management.
+The first public release is **1.0.0**. Source is public and the production site is online. The interface is primarily Simplified Chinese, while this README contains complete Chinese and English instructions. Built-in AI/agents/RAG, accounts, cloud services, subscriptions/payments and an independent mastery/spaced-repetition system (SRS) are not implemented. Current difficulty filters, practice history, duration and self-assessment are not automatic mastery management.
 
 ```mermaid
 flowchart LR
@@ -304,7 +304,7 @@ The browser runner chooses a free local port, starts the app, creates disposable
 
 Builds use allowlists and fresh directories, refusing an existing target to avoid stale private files. Originals, candidates, historical screenshots, machine scripts and test output remain local to the maintainer. See [source delivery](docs/OPEN-SOURCE.md). A source package is not a runtime package: do not expose the complete repository as a website.
 
-The planned production address is [https://nextround.apps.brothforge.com/](https://nextround.apps.brothforge.com/). **Deployment and online availability are not yet verified; this is not a live Demo claim.** Search/AI-retrieval access and restrictions on model-training crawlers are described in [SEO preparation](docs/SEO.md). Crawler rules are not guaranteed to be honored and do not promise indexing or AI citations.
+The production site is [https://nextround.apps.brothforge.com/](https://nextround.apps.brothforge.com/). DNS, HTTPS, resource integrity and core browser flows have been verified; see the [initial release record](docs/releases/v1.0.0.md). Search/AI-retrieval access and restrictions on model-training crawlers are described in [SEO preparation](docs/SEO.md). Crawler rules are not guaranteed to be honored and do not promise indexing or AI citations.
 
 The first visit defaults to Heaven (lights on). Later visits retain your saved application theme. The loading screen always uses a dark background with green accents, independently of that theme.
 
@@ -326,7 +326,7 @@ Release workflow: the public repository is [33smeowtastic/NextRound](https://git
 
 Current evidence comes from internal automation and limited manual checks, not a large-sample study of user outcomes, retention or interview success. External model availability, cost, output quality and data policies belong to the selected service. Import validation does not prove factual correctness or training quality. Accounts, cloud sync, automatic cross-device migration and independent SRS are absent. Keep your own backups; the UI is currently primarily Simplified Chinese.
 
-Real-phone sensors, real microphones/listening, OS installation confirmation, production HTTPS/headers and storage-quota exhaustion still require target-environment checks. The production domain is selected but deployment and the production validation remain pending. The repository is [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound).
+Real-phone sensors, real microphones/listening, OS installation confirmation and storage-quota exhaustion still require target-environment checks. Production HTTPS and basic response headers have been checked. The repository is [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound).
 
 Use the repository's [Issues](https://github.com/33smeowtastic/NextRound/issues/new/choose) page and its [Bug Report](.github/ISSUE_TEMPLATE/bug_report.yml) or [Feature Request](.github/ISSUE_TEMPLATE/feature_request.yml) form. Include reproduction steps, expected/actual behavior, application version and browser environment. **Do not upload real résumés, contact details, interview transcripts, full backups, recordings or unredacted screenshots/logs.** Prefer the fictional sample or minimal synthetic data.
 

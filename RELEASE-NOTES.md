@@ -56,9 +56,9 @@ npm run build:source
 
 完整验收结论以本轮审计报告为准，不复制旧测试数量或把自动扫描零违规称为完整 WCAG 认证。 / Use the current audit report; do not copy historic test counts or describe zero automated violations as complete WCAG certification.
 
-没有内置模型、账号、云同步、远程数据库或独立 SRS。外部 AI 输出和用户自行提交给外部服务的资料由对应流程负责。真实手机传感器、真实麦克风／听感、系统安装确认、生产 HTTPS／响应头、存储配额耗尽及搜索收录尚须按目标环境核验。 / No built-in model, accounts, cloud sync, remote database or independent SRS. External AI outputs and materials deliberately submitted to external providers remain outside the local app's guarantees. Real-device sensors/microphones/listening, OS installation, production HTTPS/headers, storage-quota exhaustion and indexing require target-environment checks.
+没有内置模型、账号、云同步、远程数据库或独立 SRS。外部 AI 输出和用户自行提交给外部服务的资料由对应流程负责。真实手机传感器、真实麦克风／听感、系统安装确认、存储配额耗尽及真实搜索收录尚须按目标环境核验；生产 HTTPS 和基础响应头已检查。 / No built-in model, accounts, cloud sync, remote database or independent SRS. External AI outputs and materials deliberately submitted to external providers remain outside the local app's guarantees. Real-device sensors/microphones/listening, OS installation, storage-quota exhaustion and actual indexing require target-environment checks; production HTTPS and basic headers have been checked.
 
-计划生产地址为 [https://nextround.apps.brothforge.com/](https://nextround.apps.brothforge.com/)，部署和线上可用性尚未验证。抓取策略为开放搜索和 AI 检索、限制模型训练爬虫；不保证所有爬虫遵守规则，不承诺收录或 AI 引用。参见 [SEO 说明](docs/SEO.md)。 / The planned production address is the URL above, with deployment/availability unverified. The crawler policy permits search/AI retrieval and restricts model-training crawlers; it cannot guarantee compliance, indexing or AI citations. See the SEO documentation.
+正式站点为 [https://nextround.apps.brothforge.com/](https://nextround.apps.brothforge.com/)，DNS/TLS及关键链路已验证，见[首发记录](docs/releases/v1.0.0.md)。抓取策略为开放搜索和 AI 检索、限制模型训练爬虫；不保证所有爬虫遵守规则，不承诺收录或 AI 引用。参见 [SEO 说明](docs/SEO.md)。 / The production site is the URL above, with DNS/TLS and core flows verified in the initial release record. The crawler policy permits search/AI retrieval and restricts model-training crawlers; it cannot guarantee compliance, indexing or AI citations. See the SEO documentation.
 
 ## 许可与反馈 / Licenses and feedback
 

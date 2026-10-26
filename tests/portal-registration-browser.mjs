@@ -26,6 +26,7 @@ try{
   try {
    await page.goto(baseUrl,{waitUntil:'commit'});
    await page.locator('#startup-loading').waitFor({state:'visible'});
+   await page.waitForFunction(()=>!!document.querySelector('link[href="./startup.css"]').sheet);
    const initial = await page.evaluate(()=>({theme:document.documentElement.dataset.theme,bg:getComputedStyle(document.querySelector('#startup-loading')).backgroundColor,chrome:document.querySelector('meta[name="theme-color"]').content,outline:getComputedStyle(document.querySelector('.startup-mark g path')).stroke,highlight:getComputedStyle(document.querySelector('.startup-mark>path')).stroke,progress:getComputedStyle(document.querySelector('[data-startup-fill]')).backgroundColor}));
    check(initial.theme===expectedTheme, `Preference ${preference}: theme is resolved before app initialization, independent of dark OS setting`);
    check(initial.bg==='rgb(16, 16, 16)', `Preference ${preference}: loading surface stays dark regardless of the saved application theme`);

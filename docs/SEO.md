@@ -2,7 +2,7 @@
 
 ## 当前方案
 
-正式来源按用户确认的 `https://nextround.apps.brothforge.com/` 准备；`seo.config.json` 是配置依据。生产域名和抓取策略已确认，但本轮不执行 DNS、CDN、安全策略、部署或站长平台提交。
+正式来源按用户确认的 `https://nextround.apps.brothforge.com/` 准备；`seo.config.json` 是配置依据。生产域名和抓取策略已确认，DNS/TLS、部署和公开抓取入口已验证，见[首发记录](releases/v1.0.0.md)；站长平台账户验证及收录提交不由部署自动完成。
 
 应用仍位于根路径，视觉与业务交互不变。`/about/` 提供中文静态产品说明，`/en/` 提供对等英文说明；两者无需 JavaScript、账号或浏览器数据库即可阅读。它们准确说明 AI 发生在用户选择的外部工具中，应用负责本地沉淀、校验和复练。应用界面主要使用中文，不将英文说明页写成完整英文界面已实现。
 
@@ -39,7 +39,7 @@ npm run build:source
 4. 由站点所有者在 Google Search Console、Bing Webmaster Tools 和百度搜索资源平台完成验证，并通过账号可用入口提交/诊断。百度权限与提交入口按账号实际可见为准，不假定所有账号都有相同 sitemap 权限。
 5. 监测抓取诊断、索引状态和服务端请求；Bing 可按需要再配置 IndexNow，不在本轮自动向外部平台提交 URL。无法保证各引擎抓取时间、收录或生成式答案引用。
 
-本轮只读探测中，HTTP 返回 503，HTTPS 连接未成功建立；这只是当时从本环境观察到的状态，未据此诊断为某一特定 DNS/CDN 故障，也不作为已上线 Demo。
+发布前的只读探测曾观察到 HTTP 503 和 HTTPS 握手失败；正式部署后 DNS/TLS 已生效，HTTP 跳转 HTTPS，公开页面/robots/sitemap 已通过验证。历史失败不代表当前状态。
 
 ## 官方依据
 

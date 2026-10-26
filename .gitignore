@@ -201,3 +201,5 @@ dist/
 !/docs/DEPLOYMENT.md
 
 !/.gitattributes
+
+!/docs/releases/v1.0.0.md
