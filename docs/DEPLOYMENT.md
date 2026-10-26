@@ -2,7 +2,7 @@
 
 - 公开源码 / Source: [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)
 - 正式来源 / Production origin: [nextround.apps.brothforge.com](https://nextround.apps.brothforge.com/)
-- 当前补丁 / Current patch: `1.0.1`, version branch `codex/release-v1.0.1`.
+- 当前补丁 / Current patch: `1.0.2`, version branch `codex/release-v1.0.2`.
 - 首发 / Initial release: `1.0.0`, tag `v1.0.0`.
 - 首发版本分支 / Initial version branch: `codex/release-v1.0.0`.
 - Cloudflare Pages project: `nextround`, provider origin `nextround-b7z.pages.dev`.

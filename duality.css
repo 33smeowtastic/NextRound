@@ -110,6 +110,12 @@ body.theme-light:has(.shell) :is(input[type="checkbox"],input[type="radio"]) {ac
 body.theme-light:has(.shell) .shell :is(.help-trigger,.opportunity-slider-heading) {color:var(--gold-ink);}
 body.theme-light:has(.shell) .sheet .agenda-links {background-color:#e9e2d6;}
 
+/* Workspace artwork follows the same heaven/hell figures as the homepage. */
+body.theme-dark :is(.training-stage,.rehearse-banner) {
+  background-image:url("./assets/v3-portal/demon-cutout.png");
+  background-position:30% center;
+}
+
 body.theme-dark:has(.shell) {--primary:#bff55c;--gold-ink:#bff55c;--archive-button-gold:#bff55c;--signal:#bff55c;}
 body.theme-dark:has(.shell) :is(button,a,input,select,textarea,summary):focus-visible {outline-color:#bff55c;}
 body.theme-dark:has(.shell) .shell :is(.training-context,.agenda-item time,.agenda-time,.agenda-overview strong,.agenda-date strong) {color:var(--signal);}

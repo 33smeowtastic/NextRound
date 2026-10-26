@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 import { SEO_PUBLIC_FILES } from "./seo.mjs";
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-export const publicDocs = ["docs/ASSETS.md", "docs/DATA-MODEL.md", "docs/UI-VERIFICATION.md", "docs/UI-STANDARDS.md", "docs/TESTING.md", "docs/OPEN-SOURCE.md", "docs/SEO.md", "docs/RELEASE-AUDIT.md", "docs/DEPLOYMENT.md", "docs/releases/v1.0.0.md", "docs/releases/v1.0.1.md"];
+export const publicDocs = ["docs/ASSETS.md", "docs/DATA-MODEL.md", "docs/UI-VERIFICATION.md", "docs/UI-STANDARDS.md", "docs/TESTING.md", "docs/OPEN-SOURCE.md", "docs/SEO.md", "docs/RELEASE-AUDIT.md", "docs/DEPLOYMENT.md", "docs/releases/v1.0.0.md", "docs/releases/v1.0.1.md", "docs/releases/v1.0.2.md"];
 export const releaseScripts = ["scripts/release-files.mjs", "scripts/build-public.mjs", "scripts/build-source.mjs", "scripts/browser-tests.mjs", "scripts/run-browser-tests.mjs", "scripts/seo.mjs"];
 export const rootDocs = [".gitattributes", ".gitignore", "README.md", "AGENTS.md", "DESIGN.md", "PRODUCT.md", "LICENSE", "ASSET-LICENSE.md", "THIRD-PARTY-NOTICES.md", "package.json", "package-lock.json", "server.mjs", "seo.config.json", "CHANGELOG.md", "RELEASE-NOTES.md"];
 

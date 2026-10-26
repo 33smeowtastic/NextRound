@@ -4,6 +4,12 @@
 
 This file records version changes. The application version comes from `package.json`; use actual commits and validation records for repository, tag and deployment identity.
 
+## 1.0.2
+
+- 训练室随天堂/地狱主题使用当前首页的天使/堕天使，切换即时生效。 / Training artwork now follows the current homepage angel/fallen angel when switching themes.
+- 移除运行样式及离线预缓存对已淘汰统一插画的引用；原始素材保留在历史版本中。 / Remove the retired unified illustration from runtime styles and offline precaching; historical releases retain their original assets.
+- 新增即时切换及真实离线图片解码回归，并将训练室回归加入CI。 / Cover live theme changes and offline image decoding, and include the training regression in CI.
+
 ## 1.0.1
 
 - 英文搜索摘要精简为140字符，记录Google/Bing验证、站点地图及单页索引请求的真实回执。 / Shorten the English search description and record accepted ownership, sitemap and indexing requests.

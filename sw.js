@@ -1,4 +1,4 @@
-const CACHE = "nextround-shell-v1.0.1-seo-20261026";
+const CACHE = "nextround-shell-v1.0.2-training-art-20261026";
 const FILES = [
   "./",
   "./index.html",
@@ -68,7 +68,6 @@ const FILES = [
   "./paired-bgm.js",
   "./portal-motion.js?v=guide-polish-20261025",
   "./corner-ui.css?v=guide-polish-20261025",
-  "./assets/v3/threshold.jpg",
   "./assets/v3/knight.webp",
   "./assets/v3/oracle.webp",
   "./assets/v3/unifraktur-cook.ttf",

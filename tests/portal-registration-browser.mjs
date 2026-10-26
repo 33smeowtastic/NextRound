@@ -83,6 +83,16 @@ try{
  await p.locator('.knowledge-guide-step>summary').first().click();
  check(await p.locator('.guide-copy-button').first().isVisible(),'Offline guide exposes the right-side copy icon');
  await p.screenshot({path:file('guide-offline-507.png')});
+ await p.locator('.sidebar>.nav a[href="#/train"]').click();await p.locator('.training-stage').waitFor();
+ for(const theme of ['dark','light']){
+  if(!await p.locator('body.theme-'+theme).count())await p.locator('.side-utilities [data-action="toggle-theme"]').click();
+  const art=await p.locator('.training-stage').evaluate(async node=>{
+   const url=getComputedStyle(node).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/)[1];
+   const image=new Image();image.src=url;await image.decode();return {path:new URL(url).pathname,decoded:image.naturalWidth>0};
+  });
+  check(art.decoded&&art.path.endsWith(theme==='light'?'/angel-cutout.png':'/demon-cutout.png'),`${theme}: offline training decodes the current themed homepage figure`);
+ }
+ check(!await p.evaluate(async cacheName=>!!await (await caches.open(cacheName)).match(new URL('assets/v3/threshold.jpg',location.href).href),cacheName),'Latest offline cache excludes the retired unified artwork');
  check(report.errors.length===0,'No browser runtime errors in the final integration run');
  report.result='PASS';await writeFile(new URL('VERIFICATION.json',out),JSON.stringify(report,null,2));
  console.log(JSON.stringify({checks:report.checks.length,result:report.result,errors:report.errors}));

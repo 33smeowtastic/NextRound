@@ -354,7 +354,7 @@ small,
   overflow: hidden;
   border-radius: 14px;
   border: 1px solid #dbd6ce;
-  background: #e8e5e0 url("./assets/v3/threshold.jpg") 68% 52% / cover;
+  background: #e8e5e0 url("./assets/v3-portal/angel-cutout.png") 55% center / cover no-repeat;
   min-height: 230px;
   padding: 29px;
   display: flex;
@@ -772,7 +772,7 @@ textarea {
   min-height: 530px;
   padding: 30px;
   border-radius: 16px;
-  background: #1e1d1b url("./assets/v3/threshold.jpg") 67% center/cover;
+  background: #1e1d1b url("./assets/v3-portal/angel-cutout.png") 55% center / cover no-repeat;
   color: #f1efec;
 }
 .training-stage:before {

@@ -35,6 +35,10 @@ try {
   for (const [width, height] of [[390, 844], [320, 740], [1440, 900]]) {
     const { context, page } = await fresh(width, height);
     await page.goto(new URL("#/", baseUrl).href); await ready(page);
+    const homepageArt = await page.evaluate(() => ({
+      light: document.querySelector('.scene-angel').src,
+      dark: document.querySelector('.scene-demon').src,
+    }));
     const order = await page.locator(".portal .site-controls").evaluate((node) => [...node.children].map((button) => button.dataset.action || (button.hasAttribute("data-corner-share") ? "share" : button.className)));
     check(order[0] === "toggle-theme" && order[1] === "share", `Homepage theme control is first and share remains next at ${width}px`);
     assert.equal(await page.locator(".poster-motto").textContent(), "Solve et Coagula");
@@ -53,6 +57,12 @@ try {
     await page.locator('.entry-cta[href="#/dashboard"]').click(); await page.locator(".shell").waitFor(); await controls(page, width, height);
     await page.locator('.sidebar>.nav a[href="#/train"]').click(); await page.locator(".training-layout").waitFor();
     check(await page.locator(".train-config[open]").count() === 1 && await page.locator("#train-difficulty").count() === 1, `Formal entry reaches a complete training room after workspace reset at ${width}px`);
+    const stageArt = () => page.locator('.training-stage').evaluate(node => getComputedStyle(node).backgroundImage);
+    check((await stageArt()).includes(homepageArt.light), `Heaven training uses the current homepage angel at ${width}px`);
+    await page.locator('.side-utilities [data-action=toggle-theme]').click();
+    check((await stageArt()).includes(homepageArt.dark), `Hell training immediately uses the current homepage fallen angel at ${width}px`);
+    await page.locator('.side-utilities [data-action=toggle-theme]').click();
+    check((await stageArt()).includes(homepageArt.light), `Returning to Heaven restores the angel without reloading at ${width}px`);
     await page.locator('[data-action=train-mode][data-mode=self]').click(); assert.equal(await page.locator("#train-script option").count(), 1);
     await page.locator('[data-action=timer-toggle]').click(); await page.waitForFunction(() => document.querySelector('[data-action="timer-toggle"]')?.textContent.includes("暂停训练"));
     await page.locator('[data-action=timer-toggle]').click(); await page.locator('[data-action=timer-reset]').click();

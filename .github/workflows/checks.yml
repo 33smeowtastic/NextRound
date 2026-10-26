@@ -24,4 +24,4 @@ jobs:
       - run: npm run build
       - run: npm run build:source
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:browser -- release-onboarding ui-standards chooser-standards portal-registration seo-visibility
+      - run: npm run test:browser -- release-onboarding ui-standards chooser-standards portal-registration seo-visibility navigation-training
