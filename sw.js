@@ -1,4 +1,4 @@
-const CACHE = "nextround-shell-v1.0.2-gift-tip-20261028";
+const CACHE = "nextround-shell-v1.1.0-release-20261028";
 const FILES = [
   "./",
   "./index.html",

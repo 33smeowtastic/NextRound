@@ -4,6 +4,13 @@
 
 This file records version changes. The application version comes from `package.json`; use actual commits and validation records for repository, tag and deployment identity.
 
+## 1.1.0
+
+- 亮版与暗版可分别设置自选强调色，并提供快速选色；动作、选中态和光门细节随之变化，状态标签、品牌标志及加载页保持固定语义。 / Set separate custom accents for light and dark themes, with quick choices; action states and portal details follow the accent while status labels, branding and loading retain their semantics.
+- 更新现役 AI 整理模板至 V1.5，并在指南和「设置 → 使用 AI 协作」提供原文下载与 JSON 导入入口。 / Update the current AI organization template to V1.5, with original-byte downloads and JSON import entry points in the guide and Settings.
+- 完善工作区与指南界面；浅色工作区礼物提示改为浅底深字，并更新离线缓存身份。 / Refine the workspace and guide; use a light gift tooltip in the light workspace and refresh the offline cache identity.
+- 业务数据结构不变，已有正式档案无需迁移。 / No business-data schema change or archive migration.
+
 ## 1.0.2
 
 - 训练室随天堂/地狱主题使用当前首页的天使/堕天使，切换即时生效。 / Training artwork now follows the current homepage angel/fallen angel when switching themes.

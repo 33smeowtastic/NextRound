@@ -2,12 +2,12 @@
 
 - 公开源码 / Source: [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)
 - 正式来源 / Production origin: [nextround.apps.brothforge.com](https://nextround.apps.brothforge.com/)
-- 当前补丁 / Current patch: `1.0.2`, version branch `codex/release-v1.0.2`.
+- 当前版本 / Current version: `1.1.0`, version branch `codex/release-v1.1.0`.
 - 首发 / Initial release: `1.0.0`, tag `v1.0.0`.
 - 首发版本分支 / Initial version branch: `codex/release-v1.0.0`.
 - Cloudflare Pages project: `nextround`, provider origin `nextround-b7z.pages.dev`.
 
-## 正式发布基线与待验收部署 / Released baseline and pending deployment
+## 发布状态 / Release status
 
 截至 2026-10-26，`main`、`codex/release-v1.0.2` 与 `v1.0.2` 对应提交 `85a56146d6333b5e3e3a7c6fc00a238d4946db0f`；Cloudflare Pages 生产部署为 `df4a1825-c9a6-4bc5-b102-237c9f83fd01`。正式产物与校验元数据见 [v1.0.2 Release](https://github.com/33smeowtastic/NextRound/releases/tag/v1.0.2)。
 
@@ -15,9 +15,9 @@ As of 2026-10-26, main, the version branch and tag identify the commit above. Th
 
 本版已有证据：219项单元测试、[版本分支CI](https://github.com/33smeowtastic/NextRound/actions/runs/40296731154)的6组浏览器检查、正式域名3组回归、旧缓存升级与离线主题图片解码通过；92个运行文件、171个源码文件及6个下载附件分别完成哈希核对。 / Evidence covers 219 tests, six CI suites, three production suites, cache upgrade and offline artwork, plus runtime/source/export hashes.
 
-截至 2026-10-28，`main` 与 `v1.0.2` 仍是上述正式发布基线。`codex/release-v1.0.2` 已作为 Pages 生产分支部署待验收更新，包含自选主题强调色、AI 模板与界面调整，以及浅色工作区礼物提示修复；用户尚未确认本次线上验收。[候选代码的 CI](https://github.com/33smeowtastic/NextRound/actions/runs/40701871103)通过语法、223 项单元测试、两种构建和 6 组浏览器检查；正式域名另通过 `portal-registration`、`seo-visibility`、`theme-accent`、`chrome-review` 4 组隔离档案浏览器检查。94 个运行文件已在上传前核对本地 SHA-256，正式域名的 CSS/缓存键、HTTPS、静态说明、robots/sitemap 和真实 404 已核对。当前生产部署的精确提交与部署 ID 以 Pages 最新 Production 记录为准；这些自动检查不代替用户验收。
+截至 2026-10-28，用户已验收 `69a5cf8` 的线上功能候选，`main` 随后快进到该提交。候选包含自选主题强调色、AI 模板与界面调整，以及浅色工作区礼物提示修复；[候选代码的 CI](https://github.com/33smeowtastic/NextRound/actions/runs/40701871103)通过语法、223 项单元测试、两种构建和 6 组浏览器检查，正式域名另通过 `portal-registration`、`seo-visibility`、`theme-accent`、`chrome-review` 4 组隔离档案浏览器检查。1.1.0 在已验收功能上同步版本、SEO、缓存和发布文档；正式提交、部署 ID、产物哈希和最终验证见 [v1.1.0 Release](https://github.com/33smeowtastic/NextRound/releases/tag/v1.1.0) 的 `release-metadata.json`。
 
-As of 2026-10-28, `main` and `v1.0.2` remain the released baseline. The `codex/release-v1.0.2` branch is deployed to Pages Production as a pending candidate, including custom theme accents, AI template/UI updates, and the light workspace gift-tooltip fix. CI and four isolated browser suites on the production domain passed; user acceptance is still pending. Check the latest Pages Production record for the exact deployment ID and commit.
+As of 2026-10-28, the user accepted the deployed feature candidate at `69a5cf8`, and `main` was fast-forwarded to that commit. Version 1.1.0 synchronizes release metadata, SEO, cache identity and documentation on the accepted functionality. Its exact commit, production deployment, artifacts and checks are recorded in the [v1.1.0 Release](https://github.com/33smeowtastic/NextRound/releases/tag/v1.1.0).
 
 ## 后续版本流程 / Subsequent releases
 
