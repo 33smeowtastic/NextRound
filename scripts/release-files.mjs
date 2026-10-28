@@ -38,8 +38,9 @@ export async function sourceFiles() {
   const files = new Set([...await runtimeFiles(), ...rootDocs, ...publicDocs, ...releaseScripts,
     ".github/workflows/checks.yml", ".github/ISSUE_TEMPLATE/bug_report.yml", ".github/ISSUE_TEMPLATE/feature_request.yml", ".github/ISSUE_TEMPLATE/config.yml",
     "tests/browser-support.mjs", "tests/workspaces-browser.js",
-    // This immutable historical template is a regression fixture, not a candidate image.
-    "assets/NextRound_AI整理与一键导入通用模板_V1.2_仅面试后复盘.md"]);
+    // Immutable historical templates remain regression fixtures, not current downloads.
+    "assets/NextRound_AI整理与一键导入通用模板_V1.2_仅面试后复盘.md",
+    "assets/NextRound_AI整理与一键导入通用模板_V1.4_面试题三级难度.md"]);
   for (const test of BROWSER_TESTS) files.add(typeof test === "string" ? `tests/${test}` : test.file);
   for (const entry of await readdir(path.join(root, "tests"), { withFileTypes: true })) if (entry.isFile() && entry.name.endsWith(".test.js")) files.add(`tests/${entry.name}`);
   return [...files].sort();

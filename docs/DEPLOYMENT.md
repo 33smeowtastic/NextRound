@@ -7,9 +7,21 @@
 - 首发版本分支 / Initial version branch: `codex/release-v1.0.0`.
 - Cloudflare Pages project: `nextround`, provider origin `nextround-b7z.pages.dev`.
 
-首次发布的 `main` 与版本分支指向同一首发提交。后续版本从对应版本分支开发、验证并部署，线上检查通过后再合并 GitHub `main`；不要把后续版本直接推到生产或提前合并。Tag、Release 产物及部署元数据应对应已验证提交。
+## 当前发布状态 / Current release state
 
-The initial `main` and version branch identify the same release commit. For subsequent versions, develop, validate and deploy from the corresponding version branch, verify the live site, then merge into GitHub `main`. Tags, Release assets and deployment metadata must match the validated commit.
+截至 2026-10-26，`main`、`codex/release-v1.0.2` 与 `v1.0.2` 对应提交 `85a56146d6333b5e3e3a7c6fc00a238d4946db0f`；Cloudflare Pages 生产部署为 `df4a1825-c9a6-4bc5-b102-237c9f83fd01`。正式产物与校验元数据见 [v1.0.2 Release](https://github.com/33smeowtastic/NextRound/releases/tag/v1.0.2)。
+
+As of 2026-10-26, main, the version branch and tag identify the commit above. The production deployment and downloadable assets are recorded in the release metadata.
+
+本版已有证据：219项单元测试、[版本分支CI](https://github.com/33smeowtastic/NextRound/actions/runs/40296731154)的6组浏览器检查、正式域名3组回归、旧缓存升级与离线主题图片解码通过；92个运行文件、171个源码文件及6个下载附件分别完成哈希核对。 / Evidence covers 219 tests, six CI suites, three production suites, cache upgrade and offline artwork, plus runtime/source/export hashes.
+
+## 后续版本流程 / Subsequent releases
+
+以下用户验收要求在1.0.2发布后明确，适用于后续版本，不改变既有发布记录。 / The user acceptance requirement below was clarified after 1.0.2 and applies to subsequent versions.
+
+首次发布的 `main` 与版本分支指向同一首发提交。后续版本从对应版本分支开发、验证并部署。Codex 完成线上检查后，提供正式站点验收入口、检查结果及已知限制，等待用户亲自验证并明确确认本次版本验收通过，再合并 GitHub `main`，随后发布对应 Tag / Release。自动检查通过或一般的部署上线授权不能代替用户验收；用户未确认时，保留在线版本分支，不合并 main。Tag、Release 产物及部署元数据应对应双方验收的提交。
+
+The initial `main` and version branch identify the same release commit. For subsequent versions, develop, test and deploy the version branch. After Codex verifies production, provide the acceptance URL, results and known limitations, then wait for the user to personally test and explicitly accept that deployed version before merging into GitHub `main` and publishing its Tag / Release. Automated checks or general deployment authorization do not replace user acceptance. Until accepted, retain the deployed version branch without merging main. Release assets and metadata must match the commit accepted by both parties.
 
 ## 仅部署运行包 / Deploy only the runtime
 
@@ -31,4 +43,4 @@ For this subdomain, add the CNAME at DNSPod and associate the full hostname with
 
 After deployment, verify HTTPS, the default Heaven theme and dark loading screen, bilingual static descriptions, asset integrity, offline refresh, robots/sitemap and genuine 404s. Use disposable fictional archives for browser checks. See [SEO](SEO.md) for discovery validation; indexing is not guaranteed.
 
-Direct Upload 不自动监听 GitHub main。上线新版本前，将 Pages 的生产分支明确设为对应版本分支，部署命令的 `--branch` 与之匹配；其他分支上传属于预览，不代表正式域名已更新。完成正式域名验收后，再合并main。 / Direct Upload does not automatically deploy GitHub main. Set the Pages production branch to the version branch being released and match `--branch` when deploying; other branches are previews. Merge main only after production verification.
+Direct Upload 不自动监听 GitHub main。上线新版本前，将 Pages 的生产分支明确设为对应版本分支，部署命令的 `--branch` 与之匹配；其他分支上传属于预览，不代表正式域名已更新。完成 Codex 线上验证并获得用户明确的线上验收通过确认后，再合并main。 / Direct Upload does not automatically deploy GitHub main. Set the Pages production branch to the version branch being released and match `--branch` when deploying; other branches are previews. Merge main only after Codex production verification and explicit user acceptance of that deployed version.

@@ -102,8 +102,11 @@ body.theme-light:has(.shell) {
 }
 body.theme-light:has(.shell) .shell .nav a.active,
 body.theme-light:has(.shell) .shell .nav a.active:hover {background-color:#ece2d1;color:#68512f;}
-body.theme-light:has(.shell) .shell :is(.badge,.badge.neutral,.badge.green,.card-tag) {background-color:#eee4d4;color:#755a32;border-color:#cfc0a9;}
-body.theme-light:has(.shell) .shell .badge.blue {background-color:#e7edf1;color:#49647b;}
+body.theme-light:has(.shell) .shell :is(.badge,.badge.neutral,.card-tag) {background-color:#eee4d4;color:#755a32;border-color:#cfc0a9;}
+body.theme-light:has(.shell) .shell .badge.green {background-color:#e7eddf;color:#4d684d;border-color:#b8c9b0;}
+body.theme-light:has(.shell) .shell .badge.red {background-color:#f4e4e5;color:#913e49;border-color:#d8b5ba;}
+body.theme-light:has(.shell) .shell .badge.yellow {background-color:#f1e9d3;color:#795d2e;border-color:#d9c99f;}
+body.theme-light:has(.shell) .shell .badge.blue {background-color:#e7edf1;color:#49647b;border-color:#c2d0d9;}
 body.theme-light:has(.shell) .shell :is(.agenda-week button.is-selected,.agenda-week button.active,.agenda-week button[aria-pressed="true"]) {background-color:#e9ddc5;color:#68512f;}
 body.theme-light:has(.shell) .shell :is(.note,.workspace-notice,.help-popover,.composition-undo,.agenda-links) {background-color:#eee7da;}
 body.theme-light:has(.shell) :is(input[type="checkbox"],input[type="radio"]) {accent-color:var(--signal);}

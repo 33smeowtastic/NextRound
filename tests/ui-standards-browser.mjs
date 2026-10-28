@@ -38,6 +38,23 @@ try{
   check(await page.locator('main.portal').count()===1,theme+': homepage has one main landmark');
   await axe(page,theme+' homepage');
   await page.locator('[data-action=demo]').click();await page.locator('.shell').waitFor();
+  if(theme==='light'){
+   await page.setViewportSize({width:1440,height:900});await route(page,'decision');
+   const palette=await page.evaluate(()=>{
+    const tags=[...document.querySelectorAll('.opportunity-tags .badge')];
+    const actual={green:tags.find(tag=>tag.textContent.trim()==='双休'),red:tags.find(tag=>tag.textContent.trim()==='通勤较远')};
+    const row=document.querySelector('.opportunity-tags');
+    const probes=['yellow','blue'].map(color=>{const tag=document.createElement('span');tag.className=`badge ${color}`;tag.textContent=`${color} test`;row.append(tag);return tag});
+    const style=tag=>tag&&{background:getComputedStyle(tag).backgroundColor,color:getComputedStyle(tag).color,border:getComputedStyle(tag).borderColor};
+    const result=Object.fromEntries([...Object.entries(actual),...probes.map(tag=>[tag.classList[1],tag])].map(([color,tag])=>[color,style(tag)]));
+    probes.forEach(tag=>tag.remove());return result;
+   });
+   check(palette.green?.background==='rgb(231, 237, 223)'&&palette.green.color==='rgb(77, 104, 77)', 'light decision card keeps favorable tags green');
+   check(palette.red?.background==='rgb(244, 228, 229)'&&palette.red.color==='rgb(145, 62, 73)', 'light decision card keeps risk tags red');
+   check(palette.yellow?.background==='rgb(241, 233, 211)'&&palette.yellow.color==='rgb(121, 93, 46)', 'light decision card keeps pending risks yellow');
+   check(palette.blue?.background==='rgb(231, 237, 241)'&&palette.blue.color==='rgb(73, 100, 123)', 'light decision card keeps reference tags blue');
+   await page.screenshot({path:artifactPath('decision-tags-light-1440.png',out),fullPage:false});
+  }
   for(const width of [390,1440]){
    await page.setViewportSize({width,height:900});await layout(page);
    for(const name of ['knowledge','train','companies','settings']){
@@ -74,7 +91,7 @@ try{
   check(await trashOpener.evaluate(node=>node===document.activeElement),theme+': trash Escape returns focus to its opener');
   await route(page,'analytics');await page.locator('[data-action=trace]').first().click();await namedDialog(page,'trace-dialog');await page.keyboard.press('Escape');await page.locator('#trace-dialog').waitFor({state:'detached'});
   await route(page,'knowledge');
-  const template=await readFile(new URL('../assets/NextRound_AI整理与一键导入通用模板_V1.4_面试题三级难度.md',import.meta.url),'utf8');const payload=JSON.parse(template.match(/```json\s*\n([\s\S]*?)\n```/)[1]);
+  const template=await readFile(new URL('../assets/NextRound_AI整理与一键导入通用模板_V1.5.md',import.meta.url),'utf8');const payload=JSON.parse(template.match(/```json\s*\n([\s\S]*?)\n```/)[1]);
   for(const module of ['companies','jobs','introductions','cards','schedules','interviews'])payload[module]=[];
   payload.questions=[payload.questions.find(question=>!question.related_job_ids?.length)];
   const choosing=page.waitForEvent('filechooser');await page.locator('[data-action=import-unified]').first().click();const chooser=await choosing;await chooser.setFiles({name:'accessibility-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(payload))});await namedDialog(page,'unified-import-dialog');

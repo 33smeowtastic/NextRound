@@ -63,6 +63,15 @@ try {
     } else report.layouts.push({ before, after });
     await page.screenshot({ path: file(`rail-${width}-${height}.png`) });
   }
+  const gift = page.locator('.site-controls .gift-link');
+  check(await gift.count() === 1 && await gift.getAttribute('title') === null, 'workspace gift has no native tooltip');
+  check(await gift.getAttribute('aria-label') === '填写反馈赢「月度共创礼」', 'workspace gift keeps its accessible name');
+  await gift.hover();
+  check(await gift.locator('.gift-tip').isVisible(), 'workspace gift shows its custom tooltip on hover');
+  await page.screenshot({ path: file('gift-tooltip-workspace.png') });
+  await page.mouse.move(900, 300);
+  await gift.focus();
+  check(await gift.locator('.gift-tip').isVisible(), 'workspace gift shows its custom tooltip on focus');
   await context.close();
   assert.deepEqual(report.errors, []);
   await writeFile(new URL('VERIFICATION.json', dir), JSON.stringify(report, null, 2));

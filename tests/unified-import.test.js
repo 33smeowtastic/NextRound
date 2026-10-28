@@ -7,9 +7,11 @@ import { exportBackup, importBackup } from "../db.js";
 import { parseUnifiedImport, previewUnifiedImport, mergeUnifiedImport, UNIFIED_MODULES, MAX_IMPORT_BYTES } from "../unified-import.js";
 const TEMPLATE = new URL("../assets/NextRound_AI整理与一键导入通用模板_V1.2_仅面试后复盘.md", import.meta.url);
 const TEMPLATE_V14 = new URL("../assets/NextRound_AI整理与一键导入通用模板_V1.4_面试题三级难度.md", import.meta.url);
+const TEMPLATE_V15 = new URL("../assets/NextRound_AI整理与一键导入通用模板_V1.5.md", import.meta.url);
 const document = readFileSync(TEMPLATE, "utf8");
 const actualExample = JSON.parse(document.match(/```json\s*\n([\s\S]*?)\n```/)[1]);
 const actualV14Example = JSON.parse(readFileSync(TEMPLATE_V14, "utf8").match(/```json\s*\n([\s\S]*?)\n```/)[1]);
+const actualV15Example = JSON.parse(readFileSync(TEMPLATE_V15, "utf8").match(/```json\s*\n([\s\S]*?)\n```/)[1]);
 const clock = { now: "2026-10-24T12:00:00+08:00" };
 const fixture = () => structuredClone(actualExample);
 const preview = (input, local = blankState(), options = {}) => previewUnifiedImport(input, local, { ...clock, ...options });
@@ -62,6 +64,15 @@ test("three difficulty values persist; invalid and mixed legacy values fail befo
   assert.match(preview(missing).errors.join("；"), /difficulty 缺失/);
 });
 
+test("the current V1.5 template preserves supplied bytes and its example imports", () => {
+  assert.equal(createHash("sha256").update(readFileSync(TEMPLATE_V15)).digest("hex"), "df062fb7a9e8f0f2258a8266b5bce8fd2f3df8762d82e87b2a9468172e19cfab");
+  assert.equal(actualV15Example.import_schema_version, "next-round-unified-1.2");
+  const { state, report } = merge(actualV15Example);
+  assert.equal(report.added, 11);
+  assert.equal(state.companies[0].reason, actualV15Example.companies[0].reason);
+  assert.equal(state.companies[0].score_basis, actualV15Example.companies[0].score_basis);
+  assert.equal(validateState(state), true);
+});
 test("legacy difficulty is preserved and suggested without silently rewriting local or imported records", () => {
   const oldFile = fixture(), old = merge(oldFile).state;
   assert.equal(old.questions[0].difficulty, "中");

@@ -25,4 +25,4 @@
 
 ## 正式版本与分支流程
 
-首个正式上线版本为 `1.0.0`，对应 `v1.0.0` Tag；公开仓库为[33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)，首发main与版本分支使用同一提交，详情见[首发记录](releases/v1.0.0.md)。后续版本在对应版本分支开发、构建并上线验证，确认无问题后才合并到 GitHub `main`；Tag、Release 和上传产物对应已验证版本提交。本地构建不会执行 Git 写入、公开发布或生产变更。
+当前正式版为 `1.0.2`，见 [v1.0.2记录](releases/v1.0.2.md)；首发 `1.0.0` 与 `1.0.1` 保留。后续发布遵循[部署说明](DEPLOYMENT.md)：版本分支部署后先由 Codex 验证，再等待用户亲自验收并明确确认，才合并 `main` 和发布对应 Tag / Release。本地构建不会执行 Git 写入、公开发布或生产变更。 / The current release is 1.0.2. Subsequent releases require both Codex production verification and explicit user acceptance before merging main and publishing; local builds do not perform Git or production changes.

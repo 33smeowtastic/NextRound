@@ -13,6 +13,7 @@ try {
  await p.locator('.side-utilities a[href="#/settings"]').click();await p.locator('.settings-panel[data-section=ai]>summary').click();
  const ai=p.locator('.settings-panel[data-section=ai]'),backup=p.locator('.settings-panel[data-section=backup]');
  check(await ai.locator('[download]').count()===2&&await ai.locator('[data-action=import-unified]').count()===1,'AI collaboration fold owns the protocol, template and JSON import');
+ check((await ai.locator('a[download*="V1.5"]').getAttribute('href'))?.endsWith('/NextRound_AI整理与一键导入通用模板_V1.5.md'),'Settings downloads the current V1.5 template');
  check(await backup.locator('[download],[data-action=import-unified]').count()===0&&await backup.locator('[data-action=export],[data-action=import],[data-action=import-replace]').count()===3,'Backup fold retains backup actions and no duplicate AI actions');
  await p.locator('.settings-grid').screenshot({path:artifactPath('settings-ai-mobile.png', out)});
  if(!await p.locator('body.theme-dark').count())await p.locator('.side-utilities [data-action=toggle-theme]').click();

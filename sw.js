@@ -39,7 +39,7 @@ const FILES = [
   "./unified-import.js",
   "./settings-ui.js",
   "./assets/ai-job-import-template-v4.md",
-  "./assets/NextRound_AI整理与一键导入通用模板_V1.4_面试题三级难度.md",
+  "./assets/NextRound_AI整理与一键导入通用模板_V1.5.md",
   "./db.js",
   "./trash.js",
   "./content-cards.js",

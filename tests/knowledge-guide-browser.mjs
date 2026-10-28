@@ -11,7 +11,7 @@ let testTheme="dark";
 const check=(v,label)=>{assert.ok(v,label);report.checks.push(`[${testTheme}] ${label}`)};
 const protocol=await readFile(new URL("../assets/通用AI面试训练协议_公开版_V1.0.md",import.meta.url));
 assert.equal(createHash("sha256").update(protocol).digest("hex"),"2ba57798d8c233192a438afc099d4f95503918d0d4f1762360a21f51b938fff0","Protocol source bytes remain unchanged");
-const template=await readFile(new URL("../assets/NextRound_AI整理与一键导入通用模板_V1.4_面试题三级难度.md",import.meta.url));
+const template=await readFile(new URL("../assets/NextRound_AI整理与一键导入通用模板_V1.5.md",import.meta.url));
 const payload=JSON.parse(template.toString("utf8").match(/```json\s*\n([\s\S]*?)\n```/)[1]);
 for(const module of UNIFIED_MODULES)if(module!=="questions")payload[module]=[];
 payload.questions=[payload.questions.find(q=>!q.related_job_ids?.length)];
@@ -51,7 +51,7 @@ try {
   const [download]=await Promise.all([p.waitForEvent("download"),steps.nth(0).locator("a[download]").click()]);assert.equal(download.suggestedFilename(),"通用AI面试训练协议_公开版_V1.0.md");assert.deepEqual(await readFile(await download.path()),protocol);
   check(true,`The first instruction copies literally and protocol download matches the supplied bytes at ${width}px`);
   await steps.nth(1).locator("summary").click();await steps.nth(1).locator('[data-action=guide-copy]').click();assert.equal(await p.evaluate(()=>window.__copied),GUIDE_COMMANDS.organize);
-  const [templateDownload]=await Promise.all([p.waitForEvent("download"),steps.nth(1).locator("a[download]").click()]);assert.deepEqual(await readFile(await templateDownload.path()),template);
+  const [templateDownload]=await Promise.all([p.waitForEvent("download"),steps.nth(1).locator("a[download]").click()]);assert.equal(templateDownload.suggestedFilename(),"NextRound_AI整理与一键导入通用模板_V1.5.md");assert.deepEqual(await readFile(await templateDownload.path()),template);
   check(true,`The second full instruction copies literally and template download preserves its original bytes at ${width}px`);
   for(const [index,purpose]of [[0,"用于开始 AI 首轮训练"],[1,"用于将训练成果整理成题库"]]){
     const trigger=steps.nth(index).locator("[data-help-trigger]");

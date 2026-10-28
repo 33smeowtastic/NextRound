@@ -35,7 +35,7 @@ try{
  check(await guide.evaluate(node=>node.open)&&await page.locator('[data-kind=questions].row-title').count()===0,'First-use formal knowledge bank is empty and shows the onboarding guide');
  await page.locator('.knowledge-guide-step').nth(1).locator('summary').click();
  const templateLink=page.locator('.knowledge-guide-step').nth(1).locator('a[download]');
- check(await templateLink.isVisible()&&(await templateLink.getAttribute('href')).includes('V1.4'),'The new user can find the current AI organization template from the guide');
+ check(await templateLink.isVisible()&&(await templateLink.getAttribute('href')).includes('V1.5'),'The new user can find the current AI organization template from the guide');
  const templateResponse=await page.request.get(new URL(await templateLink.getAttribute('href'),baseUrl).href);
  check(templateResponse.status()===200,'The guide template link resolves to a downloadable bundled resource');
  await confirmJson(page,exampleBytes);

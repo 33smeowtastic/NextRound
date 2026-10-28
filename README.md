@@ -73,7 +73,7 @@ npm start
 
 是否为空依据完整的 `state.questions`，搜索零匹配不会触发空题库引导。已有题目或导入成功后指南默认收起，仍可手动展开。
 
-「设置 → 使用 AI 协作」集中放置 [通用 AI 面试训练协议](assets/通用AI面试训练协议_公开版_V1.0.md)、[AI 整理模板 V1.4](assets/NextRound_AI整理与一键导入通用模板_V1.4_面试题三级难度.md) 与「导入 JSON」。下载资料保留用户源文件字节；文中面向 AI 的指令只作为文件内容，不是应用的运行规则。AI 训练与整理在用户选择的外部 AI 对话中进行，应用只在本机预览和导入 JSON。
+「设置 → 使用 AI 协作」集中放置 [通用 AI 面试训练协议](assets/通用AI面试训练协议_公开版_V1.0.md)、[AI 整理模板 V1.5](assets/NextRound_AI整理与一键导入通用模板_V1.5.md) 与「导入 JSON」。下载资料保留用户源文件字节；文中面向 AI 的指令只作为文件内容，不是应用的运行规则。AI 训练与整理在用户选择的外部 AI 对话中进行，应用只在本机预览和导入 JSON。
 
 统一导入与完整备份分开：统一导入先预览模块、条目和冲突，再确认写入；空数组不会清空本机记录。备份仍使用独立的导出、增量导入和替换导入入口。
 
@@ -177,7 +177,7 @@ npm run build:source
 
 更新记录见 [CHANGELOG](CHANGELOG.md)，发布材料见 [Release Notes](RELEASE-NOTES.md)。搜索和 AI 检索开放、限制模型训练爬虫的配置与上线后检查见 [SEO 说明](docs/SEO.md)；不保证所有爬虫遵守规则，不承诺收录或 AI 引用。
 
-发布流程：公开仓库为 [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound)；后续版本在对应版本分支开发、构建并上线验证，确认无问题后再合并到 GitHub `main`。Tag、Release 与最终验证通过的版本提交保持一致。本次首发 `main` 与 `codex/release-v1.0.0` 使用同一提交；后续版本才执行线上验收后合并，详见[部署说明](docs/DEPLOYMENT.md)。
+发布流程：后续版本从对应版本分支开发、构建并部署；Codex 完成线上验证后提供验收入口及结果，等待用户亲自验证并明确确认本次版本通过，再合并 GitHub `main`，随后发布 Tag / Release。自动检查不替代用户验收；具体操作、当前正式提交与历史发布见[部署说明](docs/DEPLOYMENT.md)。
 
 请在公开仓库的 [Issues](https://github.com/33smeowtastic/NextRound/issues/new/choose) 页使用 [Bug Report](.github/ISSUE_TEMPLATE/bug_report.yml) 或 [Feature Request](.github/ISSUE_TEMPLATE/feature_request.yml)。说明复现步骤、预期／实际结果、版本及浏览器环境。**不要公开上传真实简历、联系方式、面试原文、完整备份、录音或未脱敏截图／日志。** 请优先使用虚构示例或最小合成资料复现。
 
@@ -233,7 +233,7 @@ Top search or `/` finds items across modules. Valid records autosave after requi
 
 ### AI collaboration and a fictional first import
 
-The empty-library guide has four steps: download the [general AI interview protocol](assets/通用AI面试训练协议_公开版_V1.0.md), train in your chosen external AI, give the same conversation the [organization template V1.4](assets/NextRound_AI整理与一键导入通用模板_V1.4_面试题三级难度.md) to produce a plain JSON file, and import it before practicing locally. Both downloads and the import action are also under “设置 → 使用 AI 协作” (Settings → AI collaboration). Check experiences, numbers and references yourself; generated text is not verified fact.
+The empty-library guide has four steps: download the [general AI interview protocol](assets/通用AI面试训练协议_公开版_V1.0.md), train in your chosen external AI, give the same conversation the [organization template V1.5](assets/NextRound_AI整理与一键导入通用模板_V1.5.md) to produce a plain JSON file, and import it before practicing locally. Both downloads and the import action are also under “设置 → 使用 AI 协作” (Settings → AI collaboration). Check experiences, numbers and references yourself; generated text is not verified fact.
 
 The guide opens by default only when the entire question bank is empty; an empty search result does not trigger it. It collapses after questions exist or an import succeeds, and can be reopened manually. Collapsed steps show their titles; copy buttons copy complete instructions and adjacent help explains the downloads. Downloaded protocol/template bytes are preserved. Their AI instructions are document content, not code executed by the app.
 
@@ -320,7 +320,7 @@ The first visit defaults to Heaven (lights on). Later visits retain your saved a
 
 See [CHANGELOG](CHANGELOG.md) and the [Release Notes](RELEASE-NOTES.md).
 
-Release workflow: the public repository is [33smeowtastic/NextRound](https://github.com/33smeowtastic/NextRound). For subsequent versions, develop, build and deploy from the corresponding version branch; merge into GitHub `main` after validation succeeds. Tags and Releases must match the validated version commit. The initial `main` and `codex/release-v1.0.0` identify the same release commit; subsequent versions merge after live validation. See [deployment](docs/DEPLOYMENT.md).
+Release workflow: develop, build and deploy the version branch. After Codex verifies production and provides the acceptance URL and results, wait for the user to personally test and explicitly accept that version before merging GitHub `main` and publishing its Tag / Release. Automated checks do not replace user acceptance. See [deployment](docs/DEPLOYMENT.md) for the procedure, current production commit and release history.
 
 ### Known limits and feedback
 

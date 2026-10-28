@@ -62,8 +62,8 @@ Google和Bing的站点验证与提交由维护者已登录的站长平台执行�
 ## 本次平台回执（2026-10-26）
 
 - Google Search Console：正式 HTTPS URL-prefix 资源所有权验证通过；`sitemap.xml` 状态“成功”，发现 3 个网页。首页、`/about/`、`/en/` 的单页请求均收到“已请求编入索引”回执，进入优先抓取队列。首页实时测试显示“网址可编入 Google 索引”。最初的临时提交错误经重试恢复，不等于已经收录。
-- Bing Webmaster Tools：正式站点所有权验证通过；站点地图已接受并处理中；三个公开页面的单页请求均收到“URL submitted successfully”回执。三页实时测试均可索引；旧索引记录尚未更新，不能据此声称收录完成。英文摘要按实时提示精简至 140 字符。首页的图片提示对应已有 `alt=""` 的装饰图及有文字等价内容的标题图，保留其无障碍语义。平台的 markup insights 未成功加载，不作为结构化数据已被平台认可的证据。
+- Bing Webmaster Tools：正式站点所有权验证通过；站点地图最终状态“Success”，发现3个公开页面；三个公开页面的单页请求均收到“URL submitted successfully”回执。三页实时测试均可索引；旧索引记录尚未更新，不能据此声称收录完成。英文摘要按实时提示精简至 140 字符。首页的图片提示对应已有 `alt=""` 的装饰图及有文字等价内容的标题图，保留其无障碍语义。平台的 markup insights 未成功加载，不作为结构化数据已被平台认可的证据。
 - 百度：因要求账号实名认证，按维护者选择暂缓添加及提交；没有撤销公开抓取允许规则。联系资料仅在百度账号中，不进入项目源码、构建或发布包。
 - AI 检索：规则及 HTTP 探测通过，不保证实际官方爬虫访问、平台收录或 AI 引用。未找到可可靠拆分豆包/Kimi训练与检索用途的官方 UA，不虚构专用规则。
 
-Google and Bing ownership checks passed. Both accepted the sitemap; Google reported success and discovered all three public pages, while Bing was still processing it. All three URLs received individual indexing-request receipts from both platforms. Live checks confirmed indexability, but actual indexing and AI citations remain unconfirmed. Baidu submission is deferred at the maintainer's choice; its public crawling remains allowed. The English description is shortened to 140 characters. Account contact details are excluded from source and release artifacts.
+Google and Bing ownership checks passed. Both processed the sitemap successfully and discovered all three public pages. All three URLs received individual indexing-request receipts from both platforms. Live checks confirmed indexability, but actual indexing and AI citations remain unconfirmed. Baidu submission is deferred at the maintainer's choice; its public crawling remains allowed. The English description is shortened to 140 characters. Account contact details are excluded from source and release artifacts.
