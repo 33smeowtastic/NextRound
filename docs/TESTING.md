@@ -31,7 +31,7 @@ npm run test:browser -- training-finish-workspace import-security portal-registr
 
 `navigation-training` 对比首页实际图片来源，覆盖320/390/1440px训练室天堂→地狱→天堂即时切换；`portal-registration` 在断网后解码两张主题图片，并检查最新缓存不含旧统一插画。
 
-GitHub CI 的当前浏览器组为 `release-onboarding`、`ui-standards`、`chooser-standards`、`portal-registration`、`seo-visibility`、`navigation-training`，配置以 `.github/workflows/checks.yml` 为准。正式1.0.2另在正式域名执行后三组及旧缓存升级检查。CI或浏览器检查通过后，仍须按[部署流程](DEPLOYMENT.md)等待用户亲自线上验收，才能合并main。
+GitHub CI 的当前浏览器组为 `release-onboarding`、`ui-standards`、`chooser-standards`、`portal-registration`、`seo-visibility`、`navigation-training`，配置以 `.github/workflows/checks.yml` 为准。已发布 1.0.2 曾在正式域名执行后三组及旧缓存升级检查；2026-10-28 待验收部署另通过正式域名的 `portal-registration`、`seo-visibility`、`theme-accent`、`chrome-review` 四组检查，其中 `chrome-review` 核对浅色工作区礼物提示的实际计算颜色。CI 或浏览器检查通过后，仍须按[部署流程](DEPLOYMENT.md)等待用户亲自线上验收，才能合并 main。
 
 ## 两种构建与复现
 
