@@ -9,6 +9,7 @@ import { icon, doorMark } from "./icons.js";
 import { helpTip, initHelpTips, closeHelpTips } from "./help-ui.js";
 import { shellBrandMarkup } from "./shell-ui.js";
 import { settingsMarkup } from "./settings-ui.js";
+import { ACCENT_STORAGE_KEY, accentColorFor, applyAccentPrefs, loadAccentPrefs, normalizeAccentColor, pinAccent, saveAccentPrefs, unpinAccent, PINNED_ACCENT_COUNT } from "./theme-accent.js";
 import { knowledgeGuideMarkup, GUIDE_COMMANDS } from "./knowledge-guide.js";
 import { TRAINING_MODULES, trainingModuleForQuestion } from "./training-modules.js";
 import { mergeV4Import } from "./v4-import.js";
@@ -97,12 +98,14 @@ const types = {
 };
 let mobileNavOpen = false;
 let themeMode = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+let accentPrefs = loadAccentPrefs();
 const themeIcon = () => themeMode === "dark" ? `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>` : `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M19.07 4.93l-1.42 1.42M6.35 17.65l-1.42 1.42"/></svg>`;
 function applyTheme() {
   document.documentElement.dataset.theme = themeMode;
   if (!document.documentElement.hasAttribute("data-starting")) document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeMode === "dark" ? "#12110f" : "#f2eee7");
   document.body.classList.toggle("theme-light", themeMode === "light");
   document.body.classList.toggle("theme-dark", themeMode === "dark");
+  applyAccentPrefs(accentPrefs, themeMode);
   for (const control of document.querySelectorAll('[data-action="toggle-theme"]')) {
     const label = themeMode === "light" ? "关灯，切换地狱主题" : "开灯，切换天堂主题";
     control.setAttribute("aria-label", label);
@@ -1233,7 +1236,7 @@ function publicRulesPanel() {
   return `<section class="panel"><h2>考公 / 事业单位规则 ${helpTip("流程分只表示已记录的阶段，不代表成绩、名次或录用概率；自评与反馈不会加减该分。两类考试的映射可分别修改。", "公招规则说明")}</h2><form id="public-rule-form" class="form-stack"><label>个人报考评价维度（稳定 ID, 名称, 权重）<textarea name="publicDimensions">${esc(dimensions.map((d) => `${d.id}, ${d.name}, ${d.weight}`).join("\n"))}</textarea></label>${["civil-service", "public-institution"].map((t) => `<details><summary>${esc(trackLabel(t))} · 进展分</summary><div class="form-grid">${PUBLIC_STATUSES.map((status) => `<label>${status}<input name="${t}-${status}" type="number" min="0" max="100" value="${state.settings.publicStageScores?.[t]?.[status] ?? DEFAULT_PUBLIC_STAGE_SCORES[t][status]}"></label>`).join("")}</div></details>`).join("")}<button type="submit" class="btn">保存公招规则</button></form></section>`;
 }
 
-function settings() { return settingsMarkup({ state, pageHead, btn, icon, helpTip, fmtDate, esc, spaceTitle, installPrompt, statuses, publicRulesPanel, get, types }); }
+function settings() { return settingsMarkup({ state, pageHead, btn, icon, helpTip, fmtDate, esc, spaceTitle, installPrompt, statuses, publicRulesPanel, get, types, accentPrefs, themeMode }); }
 async function storageEstimate() {
   try {
     const est = await navigator.storage.estimate();
@@ -2608,6 +2611,36 @@ async function demo() {
   toast("已进入独立演示空间，正式档案不受影响。");
 }
 
+function saveAccentChoice() {
+  try { saveAccentPrefs(accentPrefs); }
+  catch { toast("颜色已在当前页面生效，但此浏览器未能保存偏好。"); }
+}
+function syncAccentSettings() {
+  const panel = document.querySelector("[data-accent-panel]");
+  if (!panel) return;
+  const color = accentColorFor(accentPrefs, themeMode);
+  const picker = panel.querySelector("[data-accent-picker]");
+  const hex = panel.querySelector("[data-accent-hex]");
+  if (picker) { picker.value = color; picker.setAttribute("aria-label", `打开调色板，设置${themeMode === "light" ? "开灯版" : "关灯版"}强调色`); }
+  if (hex) { hex.value = color.toUpperCase(); hex.setAttribute("aria-label", `${themeMode === "light" ? "开灯版" : "关灯版"}强调色 HEX 代码`); }
+  panel.querySelectorAll('[data-action="accent-mode"]').forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === themeMode)));
+  const pin = panel.querySelector('[data-action="accent-pin"]');
+  if (pin) {
+    const count = accentPrefs.pinned.filter(Boolean).length;
+    const exists = accentPrefs.pinned.includes(color);
+    pin.disabled = exists || count === PINNED_ACCENT_COUNT;
+    pin.textContent = exists ? "当前颜色已固定" : count === PINNED_ACCENT_COUNT ? "已固定 7 色" : "固定当前颜色";
+  }
+}
+function setCurrentAccent(color) {
+  const normalized = normalizeAccentColor(color);
+  if (!normalized) return false;
+  accentPrefs = { ...accentPrefs, [themeMode]: normalized };
+  saveAccentChoice();
+  applyAccentPrefs(accentPrefs, themeMode);
+  syncAccentSettings();
+  return true;
+}
 document.addEventListener("click", async (event) => {
   if (mobileNavOpen && event.target.closest(".sidebar .nav a[href]")) setMobileNavigation(false);
   const target = event.target.closest("[data-action]");
@@ -2637,6 +2670,44 @@ document.addEventListener("click", async (event) => {
       applyTheme();
       target.setAttribute("aria-label", themeMode === "light" ? "关灯，切换地狱主题" : "开灯，切换天堂主题");
       target.setAttribute("aria-pressed", String(themeMode === "light"));
+      syncAccentSettings();
+      return;
+    }
+    if (a === "accent-mode") {
+      const mode = target.dataset.mode;
+      if (!["light", "dark"].includes(mode)) return;
+      themeMode = mode;
+      try { localStorage.setItem("nextround-theme", themeMode); } catch {}
+      applyTheme();
+      syncAccentSettings();
+      return;
+    }
+    if (a === "accent-reset") {
+      accentPrefs = { ...accentPrefs, [themeMode]: null };
+      saveAccentChoice();
+      applyAccentPrefs(accentPrefs, themeMode);
+      syncAccentSettings();
+      return;
+    }
+    if (a === "accent-pin") {
+      const result = pinAccent(accentPrefs, accentColorFor(accentPrefs, themeMode));
+      if (result.status !== "added") { toast(result.status === "full" ? "最多可固定 7 个颜色，请先移除一个。" : "这个颜色已固定。"); return; }
+      accentPrefs = result.prefs;
+      saveAccentChoice();
+      render();
+      document.querySelector(`[data-action="accent-apply"][data-slot="${result.index}"]`)?.focus({ preventScroll: true });
+      return;
+    }
+    if (a === "accent-apply") {
+      const color = accentPrefs.pinned[Number(target.dataset.slot)];
+      if (color) { setCurrentAccent(color); render(); }
+      return;
+    }
+    if (a === "accent-remove") {
+      accentPrefs = unpinAccent(accentPrefs, Number(target.dataset.slot));
+      saveAccentChoice();
+      render();
+      document.querySelector('[data-action="accent-pin"]')?.focus({ preventScroll: true });
       return;
     }
     if (a === "job-tag-add") {
@@ -3046,6 +3117,8 @@ document.addEventListener("click", async (event) => {
 const $$ = (s) => Array.from(document.querySelectorAll(s));
 document.addEventListener("input", (event) => {
   const el = event.target;
+  if (el.matches("[data-accent-picker]")) { setCurrentAccent(el.value); return; }
+  if (el.matches("[data-accent-hex]")) { el.setCustomValidity(""); return; }
   if (el.matches("[data-opportunity-score]")) {
     const field = el.dataset.opportunityScore;
     const id = el.dataset.jobId;
@@ -3110,6 +3183,13 @@ document.addEventListener("input", (event) => {
 document.addEventListener("change", async (event) => {
   const el = event.target;
   try {
+    if (el.matches("[data-accent-hex]")) {
+      if (!setCurrentAccent(el.value)) {
+        el.setCustomValidity("请输入 #RRGGBB 格式的颜色代码。");
+        el.reportValidity();
+      }
+      return;
+    }
     if (el.matches("[data-bulk-select]")) {
       bulkSelection.kind = el.dataset.bulkSelect;
       bulkSelection.ids.clear();
@@ -3474,6 +3554,12 @@ document.addEventListener("submit", async (event) => {
   } catch (e) {
     toast(e.message);
   }
+});
+window.addEventListener("storage", event => {
+  if (event.key !== ACCENT_STORAGE_KEY) return;
+  accentPrefs = loadAccentPrefs();
+  applyAccentPrefs(accentPrefs, themeMode);
+  if (state && route === "settings") render();
 });
 window.matchMedia("(max-width:780px)").addEventListener("change", () => {
   mobileNavOpen = false;

@@ -9,6 +9,7 @@ export const BROWSER_TESTS = Object.freeze([
   "salary-months",
   "seo-visibility",
   "knowledge-guide",
+  "theme-accent",
   "settings-ai-archive",
   "portal-motion",
   "portal-wizard",

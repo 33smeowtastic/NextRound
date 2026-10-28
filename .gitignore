@@ -48,6 +48,8 @@
 !/startup.js
 !/style.css
 !/sw.js
+!/theme-accent.css
+!/theme-accent.js
 !/themed-controls.js
 !/training-modules.js
 !/trash.js
@@ -175,6 +177,8 @@
 !/tests/script-history.test.js
 !/tests/seo-visibility-browser.mjs
 !/tests/seo.test.js
+!/tests/theme-accent-browser.mjs
+!/tests/theme-accent.test.js
 !/tests/settings-ai-archive-browser.mjs
 !/tests/share.test.js
 !/tests/source-build.test.js

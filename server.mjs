@@ -61,6 +61,8 @@ http
           "v4-import.js",
           "unified-import.js",
           "settings-ui.js",
+          "theme-accent.js",
+          "theme-accent.css",
           "training-modules.js",
           "db.js",
           "trash.js",

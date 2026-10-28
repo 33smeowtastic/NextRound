@@ -1,0 +1,60 @@
+/* Personal accent colors change interface emphasis. Data tags and brand marks keep their meanings. */
+body[data-user-accent] .portal-crafted .portal-aura { stroke:var(--user-portal-accent); }
+body[data-user-accent] .portal-crafted .portal-light { stroke:var(--user-portal-light); }
+body[data-user-accent] .portal-crafted .entry-cta:not(.disabled) { color:var(--user-portal-accent); border-color:var(--user-portal-accent); }
+body[data-user-accent] .portal-crafted .entry-cta:not(.disabled):hover { background:var(--user-portal-soft); color:var(--user-portal-light); border-color:var(--user-portal-light); }
+body[data-user-accent] .portal-crafted .entry-cta:not(.disabled):focus-visible { outline-color:var(--user-portal-accent); }
+body[data-user-accent] .portal-crafted .entry-frame { color:var(--user-portal-accent); }
+
+body[data-user-accent]:has(.shell) .shell :is(.btn,.training-stage .btn,.rehearse-banner .btn):not(.secondary):not(.danger),
+body[data-user-accent]:has(.shell) .sheet .btn:not(.secondary):not(.danger) {
+  background-color:var(--user-accent-fill); color:var(--user-accent-on); border-color:var(--user-accent-fill);
+}
+body[data-user-accent]:has(.shell) .shell :is(.btn,.training-stage .btn,.rehearse-banner .btn):not(.secondary):not(.danger):hover,
+body[data-user-accent]:has(.shell) .sheet .btn:not(.secondary):not(.danger):hover {
+  background-color:var(--user-accent-hover); color:var(--user-accent-on); border-color:var(--user-accent-hover);
+}
+body[data-user-accent]:has(.shell) .shell .nav a.active,
+body[data-user-accent]:has(.shell) .shell .nav a.active:hover {
+  background:var(--user-accent-soft); color:var(--user-accent-ink); box-shadow:inset 2px 0 0 var(--user-accent-fill);
+}
+body[data-user-accent]:has(.shell) .shell :is(.text-btn,.knowledge-difficulty,.settings-stage-scores>summary,.opportunity-slider-footer .text-btn),
+body[data-user-accent]:has(.shell) .shell :is(.agenda-overview strong,.agenda-overview>a,.agenda-date strong,.agenda-date>em) { color:var(--user-accent-ink); }
+body[data-user-accent]:has(.shell) .shell :is(.tabs button.active,.card-tag.is-selected) { color:var(--user-accent-ink); border-color:var(--user-accent-fill); }
+body[data-user-accent]:has(.shell) .shell .agenda-week button:is(.active,.is-selected,[aria-pressed="true"],[aria-selected="true"]) { background:var(--user-accent-soft); border-color:var(--user-accent-border); color:var(--user-accent-ink); }
+body[data-user-accent]:has(.shell) .opportunity-slider input[type="range"]::-webkit-slider-thumb { background:var(--user-accent-fill); box-shadow:0 0 0 1px var(--user-accent-fill); }
+body[data-user-accent]:has(.shell) .opportunity-slider input[type="range"]::-moz-range-thumb { background:var(--user-accent-fill); box-shadow:0 0 0 1px var(--user-accent-fill); }
+body[data-user-accent] .themed-control-popup :is(.themed-select-option,.themed-calendar-days button,.themed-calendar-choices button):is([aria-selected="true"],[aria-pressed="true"]) { background:var(--user-accent-fill); color:var(--user-accent-on); }
+body[data-user-accent]:has(.shell) .training-stage { --ui-focus:var(--user-portal-accent); }
+body.theme-dark[data-user-accent]:has(.shell) .badge.green { color:#bff55c; }
+
+.accent-panel .accent-intro { margin:0 0 18px; max-width:62ch; }
+.accent-mode-switch { display:flex; gap:8px; margin-bottom:18px; }
+.accent-mode-switch button { min-height:44px; padding:9px 16px; border:1px solid var(--line); border-radius:7px; background:var(--surface-raised); color:var(--ink); cursor:pointer; }
+.accent-mode-switch button[aria-pressed="true"] { border-color:var(--user-accent-border,var(--gold-ink)); background:var(--user-accent-soft,var(--wash)); color:var(--user-accent-ink,var(--ink)); }
+.accent-editor { display:grid; grid-template-columns:68px minmax(128px,1fr) auto; align-items:end; gap:10px; max-width:470px; }
+.accent-editor label { display:grid; gap:7px; min-width:0; font-size:12px; color:var(--muted); }
+.accent-editor input[type="color"] { width:68px; height:44px; min-height:44px; padding:3px; border:1px solid var(--field-line); border-radius:7px; background:var(--surface); cursor:pointer; }
+.accent-editor input[type="color"]::-webkit-color-swatch-wrapper { padding:0; }
+.accent-editor input[type="color"]::-webkit-color-swatch { border:0; border-radius:4px; }
+.accent-editor input[data-accent-hex] { width:100%; min-height:44px; font:500 14px/1.4 var(--sans); letter-spacing:.02em; }
+.accent-editor [data-action="accent-reset"] { min-height:44px; white-space:nowrap; }
+.accent-hint { margin:10px 0 20px; font-size:12px; line-height:1.6; }
+.accent-pins-heading { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.accent-pins-heading h3 { margin:0; font-size:14px; }
+.accent-pins-heading small { color:var(--muted); font-size:12px; }
+.accent-pins { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:15px; }
+.accent-slot { display:grid; justify-items:center; gap:3px; width:48px; }
+.accent-slot button[data-action="accent-apply"],.accent-slot .accent-slot-empty { display:grid; place-items:center; width:44px; height:44px; border:1px solid var(--line); border-radius:7px; }
+.accent-slot button[data-action="accent-apply"] { background:var(--slot-color); border-color:var(--field-line); cursor:pointer; }
+.accent-slot button[data-action="accent-apply"]:hover { outline:2px solid var(--ui-focus,var(--signal)); outline-offset:2px; }
+.accent-slot .accent-slot-empty { border-style:dashed; color:var(--muted); font-size:12px; }
+.accent-slot button[data-action="accent-remove"] { min-width:36px; min-height:24px; padding:0 2px; border:0; background:transparent; color:var(--muted); font-size:12px; cursor:pointer; }
+.accent-slot button[data-action="accent-remove"]:hover { color:var(--ink); text-decoration:underline; }
+.accent-panel [data-action="accent-pin"] { min-height:44px; }
+.accent-panel [data-action="accent-pin"]:disabled { opacity:.6; cursor:default; }
+@media (max-width:540px) {
+  .accent-editor { grid-template-columns:68px minmax(0,1fr); }
+  .accent-editor [data-action="accent-reset"] { grid-column:1/-1; justify-self:start; }
+  .accent-pins { gap:8px; }
+}

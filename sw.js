@@ -1,4 +1,4 @@
-const CACHE = "nextround-shell-v1.0.2-training-art-20261026";
+const CACHE = "nextround-shell-v1.0.2-accent-20261028";
 const FILES = [
   "./",
   "./index.html",
@@ -13,6 +13,8 @@ const FILES = [
   "./review-ui.css?v=guide-polish-20261025",
   "./chrome-review.css?v=guide-polish-20261025",
   "./ui-standards.css?v=ui-standards-20261026",
+  "./theme-accent.css?v=accent-20261028",
+  "./theme-accent.js",
   "./knowledge-guide.js",
   "./assets/通用AI面试训练协议_公开版_V1.0.md",
   "./assets/v3-portal/environment-no-ring.webp",
