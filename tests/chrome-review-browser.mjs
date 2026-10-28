@@ -68,6 +68,12 @@ try {
   check(await gift.getAttribute('aria-label') === '填写反馈赢「月度共创礼」', 'workspace gift keeps its accessible name');
   await gift.hover();
   check(await gift.locator('.gift-tip').isVisible(), 'workspace gift shows its custom tooltip on hover');
+  const giftTipColors = await gift.locator('.gift-tip').evaluate(element => {
+    const style = getComputedStyle(element);
+    return { background: style.backgroundColor, color: style.color };
+  });
+  const rgb = value => value.match(/\d+/g).map(Number);
+  check(Math.min(...rgb(giftTipColors.background)) > 230 && Math.max(...rgb(giftTipColors.color)) < 100, `light workspace gift tooltip follows the light palette: ${JSON.stringify(giftTipColors)}`);
   await page.screenshot({ path: file('gift-tooltip-workspace.png') });
   await page.mouse.move(900, 300);
   await gift.focus();

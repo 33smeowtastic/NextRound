@@ -331,6 +331,7 @@ body.theme-light:has(.shell) .shell .workspace { background-image:var(--archive-
 body.theme-light:has(.shell) .shell :is(.sidebar,.topbar),
 body.theme-light:has(.shell) .shell.nav-open .sidebar,
 body.theme-light:has(.shell) .shell :is(.site-controls,.site-legal) { background:#fbf9f0; border-color:var(--line); color:var(--ink); }
+body.theme-light:has(.shell) .shell .site-controls .gift-tip { background:var(--surface); color:var(--ink); border:1px solid var(--line); box-shadow:0 6px 18px #393a301c; }
 body.theme-light:has(.shell) .shell :is(.panel,.list-panel,.company-card,.content-card-tile,.opportunity-card,.agenda-item,.settings-panel) { background:var(--surface); border-color:var(--line); color:var(--ink); }
 body.theme-light:has(.shell) .shell :is(.sheet,.sheet-header,.sheet-footer,.themed-control-popup) { background:#fbf9f0; border-color:var(--line); color:var(--ink); }
 body.theme-light:has(.shell) .shell :is(.crumb,.shell-brand,.search-button,.workspace-status .save-indicator,.nav a,.row-title) { color:var(--ink); }

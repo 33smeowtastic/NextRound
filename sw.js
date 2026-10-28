@@ -1,11 +1,11 @@
-const CACHE = "nextround-shell-v1.0.2-accent-20261028";
+const CACHE = "nextround-shell-v1.0.2-gift-tip-20261028";
 const FILES = [
   "./",
   "./index.html",
   "./startup.js",
   "./startup.css",
   "./style.css?v=grain-4",
-  "./ui-refinements.css?v=guide-polish-20261025",
+  "./ui-refinements.css?v=gift-tip-light-20261028",
   "./unified-import.css?v=unified-1",
   "./themed-controls.js?v=unified-1",
   "./poster.css?v=guide-polish-20261025",
